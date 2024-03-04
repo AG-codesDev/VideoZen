@@ -1,7 +1,7 @@
 import Body from "./components/Body";
 import Heading from "./components/Heading";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import WatchPage from "./components/WatchPage";
+import WatchPage from "./components/Watch Page/WatchPage";
 import MainContainer from "./components/MainContainer";
 
 const router = createBrowserRouter([

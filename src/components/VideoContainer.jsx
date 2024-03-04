@@ -2,28 +2,24 @@ import React, { useEffect, useState } from "react";
 import { YOUTUBE_VIDEO_API } from "../ultils/Constants";
 import VideoCard from "./VideoCard";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addVideos } from "../ultils/appSlice";
 
 const VideoContainer = () => {
-  const [videos, setvideos] = useState([]);
+  // const [videos, setvideos] = useState([]);
+  const videos = useSelector((store) => store.app.videos);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     getVideos();
-    videoBySearch();
   }, []);
 
   const getVideos = async () => {
     const data = await fetch(YOUTUBE_VIDEO_API);
     const json = await data.json();
+    // setvideos(json.items);
+    dispatch(addVideos(json.items));
     // console.log(json.items);
-    setvideos(json.items);
-  };
-
-  const videoBySearch = async () => {
-    const data = await fetch(
-      "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=viratkohli&key=AIzaSyCqMRpPSphMIZPI8EDB-BJ-6v-j7CX9fNw"
-    );
-    const json = await data.json();
-    console.log(json.items);
   };
 
   if (videos.length == 0) return "wait....";
@@ -31,7 +27,11 @@ const VideoContainer = () => {
   return (
     <div className="flex flex-wrap mt-5 justify-evenly px-2">
       {videos.map((video) => (
-        <Link to={"/watch?v=" + video.id} key={video.id} videoinfo={video}>
+        <Link
+          to={"/watch?v=" + `${video.id.videoId || video.id}`}
+          key={video.id.videoId || video.id}
+          videoinfo={video}
+        >
           <VideoCard videoInfo={video} />
         </Link>
       ))}

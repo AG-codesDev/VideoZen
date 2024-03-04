@@ -6,11 +6,17 @@ import { RiVideoAddFill } from "react-icons/ri";
 import { FaUserCircle } from "react-icons/fa";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { useDispatch } from "react-redux";
-import { toggleMenu } from "../ultils/appSlice";
-import { YOUTUBE_SEARCH_API } from "../ultils/Constants";
+import { addVideos, toggleMenu } from "../ultils/appSlice";
+import {
+  YOUTUBE_SEARCH_RESULT_VIDEOS,
+  YOUTUBE_SUGGESTION_API,
+  YOUTUBE_VIDEO_API,
+} from "../ultils/Constants";
 import { CiSearch } from "react-icons/ci";
+import { useNavigate } from "react-router-dom";
 
 const Heading = () => {
+  // const navigate = useNavigate();
   const [suggestions, setSuggestions] = useState();
   const [showSuggestions, setShowSuggestions] = useState(false);
 
@@ -30,12 +36,41 @@ const Heading = () => {
   }, [searchText]);
 
   const getSuggestions = async () => {
-    const data = await fetch(YOUTUBE_SEARCH_API + searchText);
+    const data = await fetch(YOUTUBE_SUGGESTION_API + "&q=" + searchText);
     const result = await data.json();
     setSuggestions(result[1]);
     // console.log(result[1]);
   };
 
+  // videoBySearch();
+  const handleClick = async (e) => {
+    const data = await fetch(
+      YOUTUBE_SEARCH_RESULT_VIDEOS + "&q=" + e.target.innerText
+    );
+    const json = await data.json();
+    // console.log(json.items);
+    setShowSuggestions(false);
+    setSearchText(e.target.innerText);
+    dispatch(addVideos(json.items));
+    // navigate("/");
+  };
+  if (searchText === "") {
+    const getVideos = async () => {
+      const data = await fetch(YOUTUBE_VIDEO_API);
+      const json = await data.json();
+      dispatch(addVideos(json.items));
+    };
+    getVideos();
+  }
+
+  // search button functionality
+  const onSearchBtnClick = async () => {
+    console.log(searchText);
+    const data = await fetch(YOUTUBE_SEARCH_RESULT_VIDEOS + "&q=" + searchText);
+    const json = await data.json();
+    dispatch(addVideos(json.items));
+    setShowSuggestions(false);
+  };
   return (
     <div className="flex flex-col m-3 justify-between p-1">
       <div className="headeronly flex justify-between">
@@ -58,9 +93,11 @@ const Heading = () => {
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
             onFocus={() => setShowSuggestions(true)}
-            onBlur={() => setShowSuggestions(false)}
           />
-          <IoIosSearch className=" bg-gray-200 text-[2.5rem] py-1 px-2 rounded-r-full" />
+          <IoIosSearch
+            className=" bg-gray-200 text-[2.5rem] py-1 px-2 rounded-r-full hover:cursor-pointer active:bg-black active:text-white transition-all"
+            onClick={onSearchBtnClick}
+          />
           <MdKeyboardVoice className=" bg-gray-200 text-[2.5rem] p-2 ml-5 rounded-full" />
         </div>
         <div className="videoadd-notification-user justify-around flex items-center gap-6">
@@ -77,7 +114,7 @@ const Heading = () => {
               key={suggestion}
               className="my-2 p-2 hover:bg-gray-200 hover:cursor-pointer"
             >
-              <span className="flex items-center gap-2">
+              <span className="flex items-center gap-2" onClick={handleClick}>
                 <CiSearch className="mt-1" />
                 {suggestion}
               </span>

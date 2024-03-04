@@ -1,28 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { MdHomeFilled } from "react-icons/md";
 import { SiYoutubeshorts } from "react-icons/si";
 import { MdOutlineSubscriptions } from "react-icons/md";
 
 const MenuItems = () => {
+  const [homePage, setHomePage] = useState(false);
+  const makeHome = () => {
+    setHomePage(!homePage);
+  };
+
   return (
-    <div className="flex flex-col h-screen w-48 pl-6 pt-3 gap-5">
+    <div className="flex flex-col h-screen w-48 pl-3 pt-3 gap-5">
       <div>
-        <ul className="flex flex-col gap-4">
+        <ul className="flex flex-col gap-2">
           <Link to={"/"}>
-            <li className="flex gap-2 items-center font-semibold">
+            <li
+              className={`flex gap-3 items-center font-normal hover:bg-gray-100 p-2 ${
+                homePage ? "bg-gray-100" : "bg-white"
+              } rounded-md`}
+              onClick={makeHome}
+            >
               <MdHomeFilled className="text-xl" />
               Home
             </li>
           </Link>
-          <li className="flex gap-2 items-center font-semibold">
-            <SiYoutubeshorts />
-            Shorts
-          </li>
-          <li className="flex gap-2 items-center font-semibold">
-            <MdOutlineSubscriptions />
-            Subsriptions
-          </li>
+          <Link to={"/"}>
+            <li className="flex gap-3 items-center font-normal hover:bg-gray-100 p-2 rounded-md">
+              <SiYoutubeshorts />
+              Shorts
+            </li>
+          </Link>
+          <Link to={"/"}>
+            <li className="flex gap-3 items-center font-normal hover:bg-gray-100 p-2 rounded-md">
+              <MdOutlineSubscriptions />
+              Subsriptions
+            </li>
+          </Link>
         </ul>
       </div>
 

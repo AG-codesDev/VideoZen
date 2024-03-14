@@ -8,7 +8,7 @@ import { AiOutlineLike } from "react-icons/ai";
 
 const VideoData = ({ snippet, statistics }) => {
   return (
-    <div className="video-data flex flex-col w-4/5 mx-28">
+    <div className="video-data flex flex-col w-4/5">
       <h1 className="video-title font-bold text-xl">{snippet.title}</h1>
 
       <div className="flex items-center justify-between">

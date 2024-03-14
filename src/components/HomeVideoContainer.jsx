@@ -4,10 +4,12 @@ import VideoCard from "./VideoCard";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addVideos } from "../ultils/appSlice";
+import ButtonList from "./ButtonList";
+import Shimmer from "./Shimmer";
 
-const VideoContainer = () => {
-  // const [videos, setvideos] = useState([]);
-  const videos = useSelector((store) => store.app.videos);
+const HomeVideoContainer = () => {
+  const homeVideos = useSelector((store) => store.app.homeVideos);
+  const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -17,16 +19,19 @@ const VideoContainer = () => {
   const getVideos = async () => {
     const data = await fetch(YOUTUBE_VIDEO_API);
     const json = await data.json();
-    // setvideos(json.items);
     dispatch(addVideos(json.items));
-    // console.log(json.items);
   };
-
-  if (videos.length == 0) return "wait....";
-
+  if (homeVideos.length === 0) {
+    return <Shimmer />;
+  }
+  // console.log(homeVideos);
   return (
-    <div className="flex flex-wrap mt-5 justify-evenly px-2">
-      {videos.map((video) => (
+    <div
+      className={`flex flex-wrap mt-5 gap-2 justify-evenly ${
+        isMenuOpen ? "w-[88%] ml-[11.3rem]" : ""
+      } px-2`}
+    >
+      {homeVideos.map((video) => (
         <Link
           to={"/watch?v=" + `${video.id.videoId || video.id}`}
           key={video.id.videoId || video.id}
@@ -39,4 +44,4 @@ const VideoContainer = () => {
   );
 };
 
-export default VideoContainer;
+export default HomeVideoContainer;

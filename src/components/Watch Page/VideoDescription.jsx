@@ -4,7 +4,7 @@ const VideoDescription = ({ data }) => {
   const { showFull, showLess, snippet } = data;
   return (
     <div
-      className="description mx-28 h-20 mt-2 mb-6 bg-gray-200 overflow-hidden p-3 rounded-xl text-sm leading-6"
+      className="description h-20 mt-2 mb-6 bg-gray-200 overflow-hidden p-3 rounded-xl text-sm leading-6"
       onClick={showFull}
     >
       {snippet.description}

@@ -24,12 +24,12 @@ const VideoCard = ({ videoInfo }) => {
     // console.log(daysAgo);
   };
   return (
-    <div className=" w-fit flex flex-col my-2 cursor-pointer ">
+    <div className=" w-fit flex flex-col my-2 cursor-pointer">
       <div className="imgbox mb-2">
         <img
           src={thumbnails.medium.url}
           alt=""
-          className="rounded-xl hover:rounded-none transition-all w-[22rem]"
+          className="rounded-xl hover:rounded-none transition-all w-[23rem]"
         />
       </div>
 
@@ -45,14 +45,14 @@ const VideoCard = ({ videoInfo }) => {
           </span>
         </div>
 
-        <div className="channelTitle-views-timePosted pl-12 mt-2">
+        <div className="channelTitle-views-timePosted pl-12 mt-1">
           <span className="flex items-center gap-1 font-semibold text-gray-700">
             {channelTitle} <IoMdCheckmarkCircle className="mt-1" />
           </span>
           <span className="text-gray-700 flex items-center">
             <span>
               {statistics
-                ? (statistics.viewCount / 100000).toFixed(1) + "M views"
+                ? (statistics.viewCount / 1000000).toFixed(1) + "M views"
                 : null}
             </span>
             <GoDotFill className="text-black mt-1 mx-1 text-[0.5rem]" />

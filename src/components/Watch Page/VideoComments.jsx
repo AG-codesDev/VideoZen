@@ -5,7 +5,7 @@ import { AiOutlineLike } from "react-icons/ai";
 const VideoComments = ({ data }) => {
   const { comments, statistics } = data;
   return (
-    <div className="comments-container  mx-28">
+    <div className="comments-container">
       <h1 className="font-bold text-xl">{statistics.commentCount} Comments</h1>
 
       {comments.map((comment) => (

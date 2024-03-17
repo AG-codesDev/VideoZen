@@ -1,6 +1,5 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import Sidebar from "./Sidebar";
-import MainContainer from "./MainContainer";
 import { Outlet } from "react-router-dom";
 import Heading from "./Heading";
 

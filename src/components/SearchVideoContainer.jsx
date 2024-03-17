@@ -7,20 +7,12 @@ const SearchVideoContainer = () => {
   const searchVideos = useSelector((store) => store.app.searchVideos);
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
   return (
-    <div className={` ${isMenuOpen ? "ml-56" : "ml-20"} w-4/5`}>
+    <div className={` ${isMenuOpen ? "ml-56" : "ml-20"} w-4/5 mt-20`}>
       {searchVideos.map((video) => (
-        <Link
-          to={"/watch?v=" + `${video.id.videoId}`}
-          key={video.id.videoId || video.id.channelId}
-        >
-          <VideoCard2 video={video} />
-        </Link>
+        <VideoCard2 video={video} key={video.id.videoId} />
       ))}
     </div>
   );
 };
 
 export default SearchVideoContainer;
-
-// try to create a different page for channels
-// to visit a particular channel from searchpage we need to move link component to videocard2

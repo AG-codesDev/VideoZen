@@ -2,9 +2,10 @@ import Body from "./components/Body";
 import Heading from "./components/Heading";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import WatchPage from "./components/Watch Page/WatchPage";
-import MainContainer from "./components/MainContainer";
 import SearchPage from "./components/SearchPage";
 import ExplorePage from "./components/ExplorePage";
+import ChannelPage from "./components/ChannelPage";
+import MainContainer from "./components/MainContainer";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
         path: "/explore",
         element: <ExplorePage />,
       },
+      {
+        path: "/channelPage",
+        element: <ChannelPage />,
+      },
     ],
   },
 ]);
@@ -47,7 +52,6 @@ Body
   - Sidebar
     - MenuItems
   - MainContainer
-    -ButtonList
     -videoContainer
     -videoCard
 

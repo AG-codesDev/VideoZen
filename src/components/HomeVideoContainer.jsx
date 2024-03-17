@@ -4,7 +4,6 @@ import VideoCard from "./VideoCard";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addVideos } from "../ultils/appSlice";
-import ButtonList from "./ButtonList";
 import Shimmer from "./Shimmer";
 
 const HomeVideoContainer = () => {
@@ -27,21 +26,17 @@ const HomeVideoContainer = () => {
   // console.log(homeVideos);
   return (
     <div
-      className={`flex flex-wrap mt-5 gap-2 justify-evenly ${
+      className={`flex flex-wrap mt-16 gap-2 justify-evenly ease-in-out ${
         isMenuOpen ? "w-[88%] ml-[11.3rem]" : ""
       } px-2`}
     >
       {homeVideos.map((video) => (
-        <Link
-          to={"/watch?v=" + `${video.id.videoId || video.id}`}
-          key={video.id.videoId || video.id}
-          videoinfo={video}
-        >
-          <VideoCard videoInfo={video} />
-        </Link>
+        <VideoCard videoInfo={video} key={video.id} />
       ))}
     </div>
   );
 };
 
 export default HomeVideoContainer;
+
+// do the same thing for explore videos container

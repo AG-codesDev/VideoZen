@@ -60,7 +60,7 @@ const Heading = () => {
   };
 
   return (
-    <div className="flex flex-col m-3 justify-between p-1 ">
+    <div className="flex flex-col justify-between p-3  fixed top-0 mb-4 w-full z-10 bg-white">
       <div className="headeronly flex justify-between w-full">
         <div className="logo-hamburger flex items-center mx-2 gap-4">
           <RxHamburgerMenu

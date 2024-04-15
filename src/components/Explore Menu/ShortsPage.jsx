@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { YOUTUBE_SHORTS_VIDEOS } from "../ultils/Constants";
+import { YOUTUBE_SHORTS_VIDEOS } from "../../ultils/Constants";
 import { useDispatch, useSelector } from "react-redux";
-import { addShortsVideos } from "../ultils/appSlice";
+import { addShortsVideos } from "../../ultils/appSlice";
 import { Link } from "react-router-dom";
 
 const ShortsPage = () => {

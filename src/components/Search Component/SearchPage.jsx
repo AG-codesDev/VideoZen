@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { YOUTUBE_SEARCH_RESULT_VIDEOS } from "../ultils/Constants";
+import { YOUTUBE_SEARCH_RESULT_VIDEOS } from "../../ultils/Constants";
 import SearchVideoContainer from "./SearchVideoContainer";
-import { useDispatch, useSelector } from "react-redux";
-import { addSearchVideos } from "../ultils/appSlice";
+import { useDispatch } from "react-redux";
+import { addSearchVideos } from "../../ultils/appSlice";
 
 const SearchPage = () => {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ const SearchPage = () => {
 
   const getSearchedVideos = async () => {
     const data = await fetch(
-      YOUTUBE_SEARCH_RESULT_VIDEOS + "&q=" + searchQuery
+      YOUTUBE_SEARCH_RESULT_VIDEOS + "&q=" + searchQuery + "&maxResults=100"
     );
     const json = await data.json();
     dispatch(addSearchVideos(json.items));

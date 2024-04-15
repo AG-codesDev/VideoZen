@@ -24,11 +24,11 @@ const VideoData = ({ snippet, statistics }) => {
   }, []);
 
   return (
-    <div className="video-data flex flex-col w-4/5">
+    <div className="video-data flex flex-col w-full">
       <h1 className="video-title font-semibold text-xl">{snippet.title}</h1>
 
       <div className="flex items-center justify-between">
-        <div className="channel-logo-subscribeBtn flex w-fit my-3 items-center gap-4">
+        <div className="channel-logo-subscribeBtn flex w-full my-3 items-center gap-4">
           <Link to={"/channelPage?id=" + snippet.channelId}>
             <img
               src={

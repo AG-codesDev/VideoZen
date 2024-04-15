@@ -98,7 +98,7 @@ const Heading = () => {
       </div>
 
       <div
-        className="suggestions w-[35rem] ml-[28rem] rounded-xl shadow-xl px-1 absolute bg-gray-100 top-14"
+        className="suggestions w-[35rem] ml-[28rem] rounded-xl shadow-xl px-1 absolute bg-white top-14"
         // onTouchMove={setShowSuggestion(true)}
       >
         {showSuggestion &&
@@ -108,7 +108,7 @@ const Heading = () => {
               onClick={handleClick}
               key={suggestion}
             >
-              <p className="my-2 p-2 hover:bg-gray-200 hover:cursor-pointer">
+              <p className="my-2 p-2 hover:bg-gray-100 hover:cursor-pointer">
                 <span className="flex items-center gap-2">
                   <CiSearch className="mt-1" />
                   {suggestion}

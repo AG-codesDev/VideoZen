@@ -1,11 +1,11 @@
 import Body from "./components/Body";
-import Heading from "./components/Heading";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import WatchPage from "./components/Watch Page/WatchPage";
-import SearchPage from "./components/SearchPage";
-import ExplorePage from "./components/ExplorePage";
-import ChannelPage from "./components/ChannelPage";
+import SearchPage from "./components/Search Component/SearchPage";
+import ExplorePage from "./components/Explore Menu/ExplorePage";
+import ChannelPage from "./components/Channel Data/ChannelPage";
 import MainContainer from "./components/MainContainer";
+import PlayListPage from "./components/Channel Data/Playlists/PlayListPage";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "/channelPage",
         element: <ChannelPage />,
+      },
+      {
+        path: "/playlistPage",
+        element: <PlayListPage />,
       },
     ],
   },

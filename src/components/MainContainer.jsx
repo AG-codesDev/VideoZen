@@ -1,6 +1,5 @@
 import React from "react";
-import HomeVideoContainer from "./HomeVideoContainer";
-import ExplorePage from "./ExplorePage";
+import HomeVideoContainer from "./Explore Menu/HomeVideoContainer";
 
 const MainContainer = () => {
   return <HomeVideoContainer />;

@@ -1,7 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import VideoCard2 from "./VideoCard2";
-import { Link } from "react-router-dom";
+import VideoCard2 from "../Explore Menu/VideoCard2";
 
 const SearchVideoContainer = () => {
   const searchVideos = useSelector((store) => store.app.searchVideos);

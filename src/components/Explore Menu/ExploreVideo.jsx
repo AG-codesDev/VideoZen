@@ -2,10 +2,10 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { IoMdCheckmarkCircle } from "react-icons/io";
 import { Link } from "react-router-dom";
-import { YOUTUBE_CHANNEL_DATA } from "../ultils/Constants";
+import { YOUTUBE_CHANNEL_DATA } from "../../ultils/Constants";
 
 const ExploreVideos = ({ video }) => {
-  console.log(video.snippet);
+  // console.log(video.snippet);
   const [channelData, setChannelData] = useState([]);
 
   const getChannelLogo = async () => {
@@ -50,14 +50,14 @@ const ExploreVideos = ({ video }) => {
           <Link
             to={`/watch?v=` + video.id.videoId}
             key={video.id.videoId}
-            className="title font-semibold text-base w-72 h-12 overflow-hidden"
+            className="title font-semibold w-72 h-12 overflow-hidden"
           >
             <span>{video.snippet.title}</span>
           </Link>
         </div>
 
         <div className="channelTitle-views-timePosted pl-12 mt-1">
-          <span className="flex items-center gap-1 font-semibold text-gray-700">
+          <span className="flex items-center gap-1 text-gray-700">
             {video.snippet.channelTitle}{" "}
             <IoMdCheckmarkCircle className="mt-1" />
           </span>

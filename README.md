@@ -1,8 +1,21 @@
-# React + Vite
+➡️ FEATURES
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🔍 Dynamic Search using Debouncing technique: Seamlessly search for videos with real-time results, making navigation a breeze.
 
-Currently, two official plugins are available:
+📺 Real-time YouTube Videos: Experience the magic of real-time video playback, just like on the original YouTube platform.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+👁️ Video data: Total no of views, likes, and comments on a video is available on that particular video page
+
+💬 Comment Section: Also includes a real comments section with around 100 most recent comments on the video
+
+🔴 Channel Data: Clicking on channel name or icon from anywhere will redirect to channel page where you can see subscribers count, total no of videos and channel playlists with its videos
+
+🎨 CleanUser Interface: No real mess and clutter! A sleek and intuitive UI design, crafted to enhance usability and aesthetics. 
+
+Tech Stack used:
+🔹 React JS
+🔹 Redux, Redux Toolkit
+🔹 React-router-dom
+🔹 React Icon Packs
+🔹 Context API
+🔹 Tailwind CSS

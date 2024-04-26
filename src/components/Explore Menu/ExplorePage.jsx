@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 
 import { useDispatch } from "react-redux";
-import { addExploreVideos } from "../../ultils/appSlice";
+import { addExploreVideos } from "../../Utils/appSlice";
 import ExploreVideosContainer from "./ExploreVideosContainer";
 import {
   YOUTUBE_EXPLORE_VIDEOS,
   YOUTUBE_VIDEO_API,
-} from "../../ultils/Constants";
+} from "../../Utils/Constants";
 import { useSearchParams } from "react-router-dom";
 
 const ExplorePage = () => {

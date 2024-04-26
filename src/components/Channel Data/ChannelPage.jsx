@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { YOUTUBE_CHANNEL_DATA } from "../../ultils/Constants";
+import { YOUTUBE_CHANNEL_DATA } from "../../Utils/Constants";
 import ChannelDetails from "./ChannelDetails";
 import ChannelPlaylistContainer from "./Playlists/ChannelPlaylistContainer";
 import { useSelector } from "react-redux";

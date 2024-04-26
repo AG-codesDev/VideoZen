@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { YOUTUBE_PLAYLIST_VIDEOS } from "../../../ultils/Constants";
+import { YOUTUBE_PLAYLIST_VIDEOS } from "../../../Utils/Constants";
 import { useSearchParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 

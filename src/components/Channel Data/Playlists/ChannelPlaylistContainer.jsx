@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { YOUTUBE_CHANNEL_PLAYLIST } from "../../../ultils/Constants";
+import { YOUTUBE_CHANNEL_PLAYLIST } from "../../../Utils/Constants";
 import PlaylistCard from "./PlaylistCard";
 import { RiPlayList2Line } from "react-icons/ri";
 

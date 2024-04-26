@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { IoMdCheckmarkCircle } from "react-icons/io";
 import { Link } from "react-router-dom";
-import { YOUTUBE_CHANNEL_DATA } from "../../ultils/Constants";
+import { YOUTUBE_CHANNEL_DATA } from "../../Utils/Constants";
 
 const ExploreVideos = ({ video }) => {
   // console.log(video.snippet);

@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { closeMenu } from "../../ultils/appSlice";
+import { closeMenu } from "../../Utils/appSlice";
 import { useSearchParams } from "react-router-dom";
-import { VIDEO_DATA, YOUTUBE_COMMENTS_API } from "../../ultils/Constants";
+import { VIDEO_DATA, YOUTUBE_COMMENTS_API } from "../../Utils/Constants";
 import VideoFrame from "./VideoFrame";
 import VideoData from "./VideoData";
 import VideoDescription from "./VideoDescription";
 import VideoComments from "./VideoComments";
 import SideVideos from "./SideVideos";
-import { YOUTUBE_SEARCH_RESULT_VIDEOS } from "../../ultils/Constants";
+import { YOUTUBE_SEARCH_RESULT_VIDEOS } from "../../Utils/Constants";
 
 const WatchPage = () => {
   const [comments, setComments] = useState([]);

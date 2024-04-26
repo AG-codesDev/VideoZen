@@ -1,7 +1,7 @@
 import React from "react";
 import { IoMdCheckmarkCircle } from "react-icons/io";
 import { Link } from "react-router-dom";
-import { YOUTUBE_CHANNEL_DATA } from "../../ultils/Constants";
+import { YOUTUBE_CHANNEL_DATA } from "../../Utils/Constants";
 import { useEffect, useState } from "react";
 
 const VideoCard2 = ({ video }) => {

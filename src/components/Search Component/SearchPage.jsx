@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { YOUTUBE_SEARCH_RESULT_VIDEOS } from "../../ultils/Constants";
+import { YOUTUBE_SEARCH_RESULT_VIDEOS } from "../../Utils/Constants";
 import SearchVideoContainer from "./SearchVideoContainer";
 import { useDispatch } from "react-redux";
-import { addSearchVideos } from "../../ultils/appSlice";
+import { addSearchVideos } from "../../Utils/appSlice";
 
 const SearchPage = () => {
   const dispatch = useDispatch();

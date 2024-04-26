@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { YOUTUBE_VIDEO_API } from "../../ultils/Constants";
+import { YOUTUBE_VIDEO_API } from "../../Utils/Constants";
 import VideoCard from "./VideoCard";
 import { useDispatch, useSelector } from "react-redux";
-import { addVideos } from "../../ultils/appSlice";
+import { addVideos } from "../../Utils/appSlice";
 import HomeShimmer from "../Shimmer/HomeShimmer";
 import Error from "../Error/Error";
 

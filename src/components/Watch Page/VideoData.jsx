@@ -6,7 +6,7 @@ import { PiDotsThreeBold } from "react-icons/pi";
 import { AiOutlineDislike } from "react-icons/ai";
 import { AiOutlineLike } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import { YOUTUBE_CHANNEL_DATA } from "../../ultils/Constants";
+import { YOUTUBE_CHANNEL_DATA } from "../../Utils/Constants";
 
 const VideoData = ({ snippet, statistics }) => {
   // console.log(snippet);

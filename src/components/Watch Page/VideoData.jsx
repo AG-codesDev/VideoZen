@@ -25,10 +25,10 @@ const VideoData = ({ snippet, statistics }) => {
 
   return (
     <div className="video-data flex flex-col w-full">
-      <h1 className="video-title font-semibold text-xl">{snippet.title}</h1>
+      <h1 className="video-title lg:font-bold lg:text-xl">{snippet.title}</h1>
 
-      <div className="flex items-center justify-between">
-        <div className="channel-logo-subscribeBtn flex w-full my-3 items-center gap-4">
+      <div className="flex flex-col md:flex-row items-center justify-between">
+        <div className="channel-logo-subscribeBtn flex w-full my-3 items-center gap-3">
           <Link to={"/channelPage?id=" + snippet.channelId}>
             <img
               src={
@@ -41,16 +41,17 @@ const VideoData = ({ snippet, statistics }) => {
             />
           </Link>
           <Link to={"/channelPage?id=" + snippet.channelId}>
-            <span className="font-bold flex items-center text-xl gap-1">
+            <span className=" flex items-center text-lg lg:text-xl lg:font-mediuwm  gap-1">
               {snippet.channelTitle}
               <IoMdCheckmarkCircle className="mt-1 text-gray-600" />
             </span>
           </Link>
-          <button className="bg-black text-white px-4 py-2 font-medium text-[0.9rem] rounded-3xl">
+          <button className="bg-black text-white px-3 py-1 md:py-2 font-medium text-[0.9rem] rounded-3xl">
             Subscribe
           </button>
         </div>
-        <div className="like-dislike-share-download flex gap-6 ">
+
+        <div className="like-dislike-share-download w-full justify-between overflow-hidden  flex gap-6 ">
           <span className="bg-slate-100 flex gap-3  rounded-2xl px-3 py-1">
             <button className="flex gap-1 items-center ">
               <AiOutlineLike className=" text-xl" />{" "}

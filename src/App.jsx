@@ -1,16 +1,19 @@
-import Body from "./components/Body";
+// import Body from "./components/Body Components/Body";
+import Body from "./components/Body Components/Body";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import WatchPage from "./components/Watch Page/WatchPage";
 import SearchPage from "./components/Search Component/SearchPage";
 import ExplorePage from "./components/Explore Menu/ExplorePage";
 import ChannelPage from "./components/Channel Data/ChannelPage";
-import MainContainer from "./components/MainContainer";
+import MainContainer from "./components/Explore Menu/MainContainer";
 import PlayListPage from "./components/Channel Data/Playlists/PlayListPage";
+import Error from "./components/Error/Error";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Body />,
+    // errorElement: <Error />,
     children: [
       {
         path: "/",
@@ -44,6 +47,7 @@ function App() {
   return (
     <div className="">
       <RouterProvider router={router} />
+      {/* <Shimmer /> */}
     </div>
   );
 }

@@ -26,7 +26,9 @@ const ChannelPage = () => {
   // console.log(channelData);
 
   return (
-    <div className={`flex flex-col mt-5 ${isMenuOpen ? "ml-52" : "ml-16"}`}>
+    <div
+      className={`flex flex-col mt-5 ${isMenuOpen ? "lg:ml-52" : "lg:ml-16"}`}
+    >
       <ChannelDetails channelData={channelData} />
       <ChannelPlaylistContainer channelData={channelData} />
     </div>

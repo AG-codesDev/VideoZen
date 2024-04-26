@@ -40,13 +40,13 @@ const VideoCard = ({ videoInfo }) => {
     }
   };
   return (
-    <div className=" w-fit flex flex-col my-2 cursor-pointer">
+    <div className=" w-fit flex flex-col my-2 rounded-xl pb-2 cursor-pointer ">
       <Link to={"/watch?v=" + `${id}`}>
         <div className="imgbox mb-2">
           <img
             src={thumbnails.medium.url}
             alt=""
-            className="rounded-xl hover:rounded-none transition-all w-[23rem]"
+            className="rounded-xl hover:rounded-none transition-all lg:w-[22rem] w-[24rem]"
           />
         </div>
       </Link>

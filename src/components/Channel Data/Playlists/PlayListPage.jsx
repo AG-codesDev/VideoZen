@@ -35,10 +35,12 @@ const PlayListPage = () => {
 
   return (
     <div
-      className={` mt-20 flex gap-[25rem]  ${isMenuOpen ? "ml-52" : "ml-16"}`}
+      className={` mt-16 flex flex-col lg:flex-row lg:gap-7 ${
+        isMenuOpen ? "lg:ml-48" : "lg:ml-16"
+      }`}
     >
       <PlaylistSideInfo />
-      <div className="flex flex-col">
+      <div className="flex flex-col lg:mt-4">
         {allPlayListVideos.map((video) => (
           <PlayListVideos video={video} key={video.contentDetails.videoId} />
         ))}

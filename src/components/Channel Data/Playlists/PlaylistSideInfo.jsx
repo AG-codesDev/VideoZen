@@ -13,23 +13,23 @@ const PlaylistSideInfo = ({}) => {
 
   return (
     <div>
-      <div className="sideInfo fixed bg-gradient-to-t from-gray-700 w-fit p-5 to-gray-400 rounded-xl h-[38rem]">
+      <div className="sideInfo flex flex-col w-screen lg:fixed bg-gradient-to-b from-gray-800 lg:w-fit to-gray-500 lg:rounded-xl lg:h-[38rem] h-fit lg:mt-5">
         <img
           src={state.snippet.thumbnails.medium.url}
-          className="h-52 w-80 rounded-xl"
+          className="lg:h-52 w-full  lg:rounded-xl"
           alt=""
         />
-        <p className="text-white font-bold text-xl mt-4 w-80">
+        <p className="text-white font-bold text-2xl mt-4 w-80  px-2">
           {state.snippet.title}
         </p>
-        <p className="text-white mt-3 font-semibold">
+        <p className="text-white mt-3 font-semibold px-2">
           {state.snippet.channelTitle}
         </p>
-        <p className="text-white text-xs mt-3">
+        <p className="text-white text-xs mt-3 px-2">
           {state.contentDetails.itemCount} videos
         </p>
 
-        <div className="icons mt-6 flex gap-5">
+        <div className="icons mt-6 flex gap-5 p-2">
           <button className=" rounded-full">
             <RiPlayListAddFill className="text-white text-lg" />
           </button>
@@ -44,7 +44,7 @@ const PlaylistSideInfo = ({}) => {
           </button>
         </div>
 
-        <div className="mt-7 gap-5 flex ">
+        <div className="mt-7 gap-5 hidden lg:flex p-2 ">
           <button className="px-9 py-1 rounded-2xl bg-white text-black flex items-center gap-2 ">
             <span>
               <FaPlay />

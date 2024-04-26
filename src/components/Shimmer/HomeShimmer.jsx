@@ -53,15 +53,17 @@ const dummyCards = [
   "50",
 ];
 
-const Shimmer = () => {
+const HomeShimmer = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
   return (
     <div
-      className={`flex flex-wrap mt-5 gap-2 justify-evenly ml-[11.3rem]  px-2`}
+      className={`flex flex-wrap mt-20 gap-2 justify-evenly  px-2 ${
+        isMenuOpen ? "lg:ml-36" : ""
+      }`}
     >
       {dummyCards.map((card) => (
         <div className="  flex flex-col my-2 gap-2" key={card}>
-          <div className="imgbox rounded-xl bg-gray-300 w-[23rem] h-52 "></div>
+          <div className="imgbox rounded-xl bg-gray-300 lg:w-[22rem] w-[24rem] h-52 "></div>
           <div className="flex gap-4">
             <div className="log rounded-full  bg-gray-300 w-10 h-10"></div>
             <div className="flex flex-col gap-2">
@@ -75,4 +77,4 @@ const Shimmer = () => {
   );
 };
 
-export default Shimmer;
+export default HomeShimmer;

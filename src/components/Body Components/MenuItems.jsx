@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useSearchParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { IoHomeOutline } from "react-icons/io5";
-
 import { SiShortcut } from "react-icons/si";
-
 import { IoMdTrendingUp } from "react-icons/io";
 import { IoMusicalNoteOutline } from "react-icons/io5";
 import { PiFilmSlateBold } from "react-icons/pi";
 import { FaRegNewspaper } from "react-icons/fa6";
-import { GoTrophy } from "react-icons/go";
 import { IoGameController } from "react-icons/io5";
 import { MdPodcasts } from "react-icons/md";
 import { FaLaptopCode } from "react-icons/fa";
@@ -23,7 +19,7 @@ const MenuItems = () => {
   useEffect(() => {
     setCurrentLocation(pathname);
   }, [location]);
-  console.log(currentLocation);
+  // console.log(currentLocation);
 
   const [homeTabActive, setHomeTabActive] = useState(true);
   const [shortsTabActive, setShortsTabActive] = useState(false);
@@ -59,8 +55,6 @@ const MenuItems = () => {
 
   const hanldeMenuItemClick = (e) => {
     let path = e.target.innerText;
-    // setPath(e.target.innerText);
-    // console.log(path);
 
     if (path === "Shorts") {
       navigate(`/explore?category=${path}`);
@@ -199,16 +193,16 @@ const MenuItems = () => {
 
   return (
     <div
-      className={`flex flex-col gap-7 border-gray-100 ml-0.5 rounded-sm h-full ease-in-out duration-300 border- fixed top-[4.6rem] ${
+      className={`lg:flex flex-col gap-7 shadow-lg border-gray-100 border-r-2 ml-0.5 bg-white h-screen rounded-sm  ease-in-out duration-300 border- fixed top-[3.5rem] ${
         isMenuOpen ? "translate-x-0" : "-translate-x-48"
       } `}
     >
       <div className="flex flex-col px-2 mt-4 w-44 ">
-        <ul className="flex flex-col gap-5">
+        <ul className="flex flex-col gap-8 md:gap-5">
           <li
-            className={`flex gap-3 items-center hover:cursor-pointer ${
+            className={`flex gap-3 items-center hover:cursor-pointer  ${
               homeTabActive ? "text-red-500" : ""
-            } hover:bg-gray-200 p-2 rounded-md border-gray-200  `}
+            } hover:bg-gray-100 p-2 rounded-md border-gray-200  `}
             onClick={(e) => handleHomeClick()}
           >
             <IoHomeOutline className="text-xl" />
@@ -218,7 +212,7 @@ const MenuItems = () => {
           <li
             className={`flex gap-3 items-center hover:cursor-pointer ${
               shortsTabActive ? "text-red-500" : ""
-            } hover:bg-gray-200 p-2 rounded-md border-gray-200  `}
+            } hover:bg-gray-100 p-2 rounded-md border-gray-200  `}
             onClick={(e) => hanldeMenuItemClick(e)}
           >
             <SiShortcut />
@@ -227,7 +221,7 @@ const MenuItems = () => {
           <li
             className={`flex gap-3 items-center hover:cursor-pointer ${
               trendingTabActive ? "text-red-500" : ""
-            } hover:bg-gray-200 p-2 rounded-md border-gray-200 `}
+            } hover:bg-gray-100 p-2 rounded-md border-gray-200 `}
             onClick={(e) => hanldeMenuItemClick(e)}
           >
             <IoMdTrendingUp className="" />
@@ -236,7 +230,7 @@ const MenuItems = () => {
           <li
             className={`flex gap-3 items-center hover:cursor-pointer ${
               musicTabActive ? "text-red-500" : ""
-            } hover:bg-gray-200 p-2 rounded-md border-gray-200 `}
+            } hover:bg-gray-100 p-2 rounded-md border-gray-200 `}
             onClick={(e) => hanldeMenuItemClick(e)}
           >
             <IoMusicalNoteOutline className="" />
@@ -246,7 +240,7 @@ const MenuItems = () => {
           <li
             className={`flex gap-3 items-center hover:cursor-pointer ${
               filmsTabActive ? "text-red-500" : ""
-            } hover:bg-gray-200 p-2 rounded-md border-gray-200 `}
+            } hover:bg-gray-100 p-2 rounded-md border-gray-200 `}
             onClick={(e) => hanldeMenuItemClick(e)}
           >
             <PiFilmSlateBold className="" />
@@ -256,7 +250,7 @@ const MenuItems = () => {
           <li
             className={`flex gap-3 items-center hover:cursor-pointer ${
               gamingTabActive ? "text-red-500" : ""
-            } hover:bg-gray-200 p-2 rounded-md border-gray-200 `}
+            } hover:bg-gray-100 p-2 rounded-md border-gray-200 `}
             onClick={(e) => hanldeMenuItemClick(e)}
           >
             <IoGameController className="" />
@@ -265,7 +259,7 @@ const MenuItems = () => {
           <li
             className={`flex gap-3 items-center hover:cursor-pointer ${
               newsTabActive ? "text-red-500" : ""
-            } hover:bg-gray-200 p-2 rounded-md border-gray-200 `}
+            } hover:bg-gray-100 p-2 rounded-md border-gray-200 `}
             onClick={(e) => hanldeMenuItemClick(e)}
           >
             <FaRegNewspaper className="" />
@@ -274,7 +268,7 @@ const MenuItems = () => {
           <li
             className={`flex gap-3 items-center hover:cursor-pointer ${
               iplTabActive ? "text-red-500" : ""
-            } hover:bg-gray-200 p-2 rounded-md border-gray-200 `}
+            } hover:bg-gray-100 p-2 rounded-md border-gray-200 `}
             onClick={(e) => hanldeMenuItemClick(e)}
           >
             <FaLaptopCode className="" />
@@ -283,7 +277,7 @@ const MenuItems = () => {
           <li
             className={`flex gap-3 items-center hover:cursor-pointer ${
               podcastTabActive ? "text-red-500" : ""
-            } hover:bg-gray-200 p-2 rounded-md border-gray-200 `}
+            } hover:bg-gray-100 p-2 rounded-md border-gray-200 `}
             onClick={(e) => hanldeMenuItemClick(e)}
           >
             <MdPodcasts className="" />
@@ -292,7 +286,7 @@ const MenuItems = () => {
           <li
             className={`flex gap-3 items-center hover:cursor-pointer ${
               codingTabActive ? "text-red-500" : ""
-            } hover:bg-gray-200 p-2 rounded-md border-gray-200 `}
+            } hover:bg-gray-100 p-2 rounded-md border-gray-200 `}
             onClick={(e) => hanldeMenuItemClick(e)}
           >
             <FaLaptopCode className="" />

@@ -1,5 +1,5 @@
 import React from "react";
-import HomeVideoContainer from "./Explore Menu/HomeVideoContainer";
+import HomeVideoContainer from "./HomeVideoContainer";
 
 const MainContainer = () => {
   return <HomeVideoContainer />;

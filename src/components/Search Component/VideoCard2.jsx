@@ -23,19 +23,19 @@ const VideoCard2 = ({ video }) => {
 
   return (
     // <Link to={"/watch?v=" + `${video.id.videoId}`}>
-    <div className="videoBox flex my-3 hover:bg-slate-50 transition-all">
+    <div className="videoBox flex  flex-col sm:flex-row my-7  items-center md:items-start bg-gray-100 md:bg-white hover:bg-slate-50 transition-all">
       <Link to={"/watch?v=" + `${video.id.videoId}`} className="imgxBox">
-        <div className=" mr-5 w-fit">
+        <div className=" md:mr-5">
           <img
             src={snippet.thumbnails.medium.url}
             alt=""
-            className="h-60 rounded-xl"
+            className="h-60 rounded-xl w-screen md:w-full"
           />
         </div>
       </Link>
-      <div className="otherDetails flex flex-col my-2 gap-4 w-3/5">
+      <div className="otherDetails flex flex-col my-2 gap-1 px-2 md:w-3/5 w-full">
         <Link to={"/watch?v=" + `${video.id.videoId}`} className="">
-          <span className="video-title font-semibold text-xl">
+          <span className="video-title text-md md:font-semibold">
             {snippet.title}
           </span>
         </Link>
@@ -58,7 +58,7 @@ const VideoCard2 = ({ video }) => {
             </span>
           </Link>
         </span>
-        <span className="description h-20 text-gray-500 font-semibold ">
+        <span className="description h-20 text-gray-500 font-semibold hidden md:block ">
           <Link to={"/watch?v=" + `${video.id.videoId}`} className="">
             {snippet.description}
           </Link>

@@ -12,23 +12,23 @@ const PlayListVideos = ({ video }) => {
 
   return (
     <Link to={"/watch?v=" + video.contentDetails.videoId}>
-      <div className="video-box  my-2 flex gap-4 w-[56rem] hover:bg-gray-100  transition-all">
-        <span className="self-center my-4 font-semibold">
+      <div className="video-box flex gap-4 lg:mt-0 md:mt-0 hover:bg-gray-100 lg:ml-96 transition-all p-1">
+        <span className="self-center my-4 font-semibold hidden lg:block">
           {video.snippet.position + 1}
         </span>
-        <div className="w-20%">
+        <div className=" ">
           <img
             src={video.snippet.thumbnails.medium.url}
             alt=""
             className="my-3 rounded-lg h-36 w-56"
           />
         </div>
-        <div className="w-[65%] flex flex-col gap-3">
-          <p className="videoTitle font-semibold text-lg mt-2">
+        <div className="w-1/2 lg:w-[60%] flex flex-col gap-3">
+          <p className="videoTitle lg:font-semibold text-medium lg:text-lg mt-2">
             {video.snippet.title}
           </p>
           <p className="ml-1">{video.snippet.channelTitle}</p>
-          <p className="text-sm  h-10 overflow-y-clip">
+          <p className="text-sm  h-10 overflow-y-clip hidden lg:block">
             {video.snippet.description}
           </p>
           {/* <GoDotFill className="text-black mt-1 mx-1 text-[0.5rem]" /> */}

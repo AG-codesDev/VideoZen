@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 const SideVideos = ({ video }) => {
   console.log(video);
   return (
-    <div className="sideVideo mt-5 my-4 flex justify-evenly">
-      <Link to={"/watch?v=" + video.id.videoId}>
-        <div className="imgBox w-fit]">
+    <div className="sideVideo mt-5 my-4 gap-3 lg:gap-0 flex overflow-hidden justify-evenly">
+      <Link to={"/watch?v=" + video.id.videoId} className="">
+        <div className="imgBox w-fit ">
           <img
             src={video.snippet.thumbnails.medium.url}
             alt=""
@@ -17,7 +17,7 @@ const SideVideos = ({ video }) => {
       </Link>
       <div className="w-[55%] mt-2 flex flex-col gap-5">
         <Link to={"/watch?v=" + video.id.videoId}>
-          <p className="video-title font-semibold text-sm">
+          <p className="video-title font-medium text-sm">
             {video.snippet.title}
           </p>
         </Link>

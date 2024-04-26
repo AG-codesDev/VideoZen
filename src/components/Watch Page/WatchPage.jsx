@@ -36,7 +36,7 @@ const WatchPage = () => {
   const getComments = async () => {
     const data = await fetch(
       YOUTUBE_COMMENTS_API +
-        `&textFormat=plainText&part=snippet&videoId=${videoId}&maxResults=100`
+        `&textFormat=plainText&part=snippet&videoId=${videoId}&maxResults=50`
     );
     const json = await data.json();
 
@@ -85,8 +85,12 @@ const WatchPage = () => {
 
   if (comments.length == 0) return "";
   return (
-    <div className={` flex mt-14 mr-5 ${isMenuOpen ? "ml-48" : "ml-16"}`}>
-      <div className="w-[59%]">
+    <div
+      className={` flex flex-col lg:flex-row lg:mt-20 mt-14 ${
+        isMenuOpen ? "lg:ml-48" : "lg:ml-10"
+      }`}
+    >
+      <div className=" lg:w-[90%] mx-1">
         <VideoFrame videoId={videoId} />
         <VideoData snippet={snippet} statistics={statistics} />
         <VideoDescription data={{ snippet, showFull, showLess }} />
@@ -96,7 +100,8 @@ const WatchPage = () => {
           ""
         )}
       </div>
-      <div className="ml-10">
+      <div className="mt-3 px-1">
+        <h1 className="lg:ml-7 font-semibold text-lg">Related Videos</h1>
         {sideVideos.map((video) => (
           <SideVideos video={video} key={video.id.videoId} />
         ))}

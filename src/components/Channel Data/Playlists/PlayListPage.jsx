@@ -44,7 +44,7 @@ const PlayListPage = () => {
       <div
         className={`${
           isDarkModeActive ? "bg-gray-900" : "bg-white"
-        } flex h-screen flex-col lg:mt-4`}
+        } flex h-full flex-col lg:mt-4`}
       >
         {allPlayListVideos.map((video) => (
           <PlayListVideos video={video} key={video.contentDetails.videoId} />

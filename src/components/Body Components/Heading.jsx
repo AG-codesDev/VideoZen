@@ -151,7 +151,7 @@ const Heading = () => {
       <div
         className={` ${
           isDarkModeActive ? "bg-gray-800 text-white" : "bg-white"
-        } suggestions lg:ml-[29rem] w-full lg:w-[40.4rem] shadow-xl absolute top-12`}
+        } suggestions hidden lg:block lg:ml-[29rem] w-full lg:w-[40.4rem] shadow-xl absolute top-12`}
         onMouseLeave={() => setShowSuggestion(false)}
         onMouseEnter={() => setShowSuggestion(true)}
       >

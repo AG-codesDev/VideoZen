@@ -13,11 +13,12 @@ const SearchVideoContainer = () => {
   }
 
   return (
-    <div className={` ${isMenuOpen ? "md:ml-56" : "md:ml-10"} px-2 mt-20`}>
+    <div
+      className={` ${isMenuOpen ? "md:ml-56" : "md:ml-10"} px-2 py-2 mt-14 `}
+    >
       {searchVideos.map((video) => (
         <VideoCard2 video={video} key={video.id.videoId} />
       ))}
-      {/* <SearchShimmer /> */}
     </div>
   );
 };

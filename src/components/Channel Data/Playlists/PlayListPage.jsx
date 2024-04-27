@@ -9,6 +9,7 @@ import PlayListVideos from "./PlayListVideos";
 const PlayListPage = () => {
   const [allPlayListVideos, setAllPlayListVideos] = useState([]);
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
+  const isDarkModeActive = useSelector((store) => store.app.darkMode);
 
   const [searchParams] = useSearchParams();
   // const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
@@ -35,12 +36,16 @@ const PlayListPage = () => {
 
   return (
     <div
-      className={` mt-16 flex flex-col lg:flex-row lg:gap-7 ${
+      className={` mt-14 py-2 flex flex-col lg:flex-row lg:gap-7 ${
         isMenuOpen ? "lg:ml-48" : "lg:ml-16"
       }`}
     >
       <PlaylistSideInfo />
-      <div className="flex flex-col lg:mt-4">
+      <div
+        className={`${
+          isDarkModeActive ? "bg-gray-900" : "bg-white"
+        } flex h-screen flex-col lg:mt-4`}
+      >
         {allPlayListVideos.map((video) => (
           <PlayListVideos video={video} key={video.contentDetails.videoId} />
         ))}

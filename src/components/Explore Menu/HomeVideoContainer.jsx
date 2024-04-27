@@ -4,14 +4,13 @@ import VideoCard from "./VideoCard";
 import { useDispatch, useSelector } from "react-redux";
 import { addVideos } from "../../Utils/appSlice";
 import HomeShimmer from "../Shimmer/HomeShimmer";
-import Error from "../Error/Error";
 
 const HomeVideoContainer = () => {
   const homeVideos = useSelector((store) => store.app.homeVideos);
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
+  const isDarkModeActive = useSelector((store) => store.app.darkMode);
   const dispatch = useDispatch();
 
-  const [errorMessage, setErrorMessage] = useState("");
   useEffect(() => {
     getVideos();
   }, []);
@@ -20,23 +19,22 @@ const HomeVideoContainer = () => {
     const data = await fetch(YOUTUBE_VIDEO_API);
     const json = await data.json();
     dispatch(addVideos(json.items));
-    // console.log(json);
   };
   if (homeVideos.length === 0) {
     return <HomeShimmer />;
   }
-  console.log(homeVideos);
   return (
     <div
-      className={`flex flex-wrap mt-16 lg:mt-20 gap-2 justify-evenly ease-in-out ${
-        isMenuOpen ? "lg:w-[88%] lg:ml-[11.3rem]" : ""
-      } px-2`}
+      className={` ${
+        isDarkModeActive ? "bg-gray-900" : ""
+      } flex flex-wrap mt-12 lg:mt-16  gap-2 justify-evenly ease-in-out py-5 lg:py-3 ${
+        isMenuOpen ? "lg:w-[88%] lg:ml-[11rem]" : ""
+      }`}
     >
       {homeVideos.map((video) => (
         <VideoCard videoInfo={video} key={video.id} />
       ))}
     </div>
-    // <Error />
   );
 };
 

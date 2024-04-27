@@ -3,11 +3,14 @@ import { IoMdCheckmarkCircle } from "react-icons/io";
 import { GoDotFill } from "react-icons/go";
 import { YOUTUBE_CHANNEL_DATA } from "../../Utils/Constants";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const VideoCard = ({ videoInfo }) => {
   // console.log(videoInfo);
 
   const [channelData, setChannelData] = useState([]);
+  const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
+  const isDarkModeActive = useSelector((store) => store.app.darkMode);
 
   const { snippet, statistics } = videoInfo;
   // console.log();
@@ -40,7 +43,9 @@ const VideoCard = ({ videoInfo }) => {
     }
   };
   return (
-    <div className=" w-fit flex flex-col my-2 rounded-xl pb-2 cursor-pointer ">
+    <div
+      className={` w-fit flex flex-col my-2 rounded-xl pb-2 cursor-pointer `}
+    >
       <Link to={"/watch?v=" + `${id}`}>
         <div className="imgbox mb-2">
           <img
@@ -66,20 +71,30 @@ const VideoCard = ({ videoInfo }) => {
           </Link>
           <Link
             to={"/watch?v=" + `${id}`}
-            className="title font-semibold text-base w-72 h-12 overflow-hidden"
+            className={` title font-semibold  text-base w-72 h-12 overflow-hidden`}
           >
-            <span>{title}</span>
+            <span className={`${isDarkModeActive ? "text-white" : ""}`}>
+              {title}
+            </span>
           </Link>
         </div>
 
         <div className="channelTitle-views-timePosted pl-12">
           <Link to={"/channelPage?id=" + videoInfo.snippet.channelId}>
-            <span className="flex items-center gap-1 mt-1 text-gray-700">
+            <span
+              className={` ${
+                isDarkModeActive ? "text-slate-200" : "text-gray-700"
+              } flex items-center gap-1 mt-1 `}
+            >
               {channelTitle} <IoMdCheckmarkCircle className="mt-1" />
             </span>
           </Link>
 
-          <span className="text-gray-700 flex items-center">
+          <span
+            className={` ${
+              isDarkModeActive ? "text-slate-200" : "text-gray-700"
+            }  flex items-center`}
+          >
             <span>
               {statistics
                 ? (statistics.viewCount / 1000000).toFixed(1) + "M views"

@@ -13,7 +13,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Body />,
-    // errorElement: <Error />,
+    errorElement: <Error />,
     children: [
       {
         path: "/",
@@ -47,7 +47,6 @@ function App() {
   return (
     <div className="">
       <RouterProvider router={router} />
-      {/* <Shimmer /> */}
     </div>
   );
 }

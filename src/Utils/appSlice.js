@@ -8,12 +8,12 @@ const appSlice = createSlice({
     searchVideos: [],
     shortsVideos: [],
     exploreVideos: [],
+    darkMode: false,
   },
   reducers: {
     toggleMenu: (state, action) => {
       state.isMenuOpen = !state.isMenuOpen;
     },
-
     closeMenu: (state) => {
       state.isMenuOpen = false;
     },
@@ -29,6 +29,9 @@ const appSlice = createSlice({
     addExploreVideos: (state, action) => {
       state.exploreVideos = action.payload;
     },
+    toggleDarkMode: (state) => {
+      state.darkMode = !state.darkMode;
+    },
   },
 });
 
@@ -39,5 +42,6 @@ export const {
   addSearchVideos,
   addShortsVideos,
   addExploreVideos,
+  toggleDarkMode,
 } = appSlice.actions;
 export default appSlice.reducer;

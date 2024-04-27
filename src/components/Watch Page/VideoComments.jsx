@@ -1,16 +1,27 @@
 import React from "react";
 import { AiOutlineDislike } from "react-icons/ai";
 import { AiOutlineLike } from "react-icons/ai";
+import { useSelector } from "react-redux";
 
 const VideoComments = ({ data }) => {
   const { comments, statistics } = data;
+  const isDarkModeActive = useSelector((store) => store.app.darkMode);
+
   return (
     <div className="comments-container overflow-hidden">
-      <h1 className="font-bold text-xl">{statistics.commentCount} Comments</h1>
+      <h1
+        className={`${
+          isDarkModeActive ? "text-white" : ""
+        } font-bold mb-3 text-xl`}
+      >
+        {statistics.commentCount} Comments
+      </h1>
 
       {comments.map((comment) => (
         <div
-          className="flex p-3  bg-slate-50 gap-4 rounded-lg"
+          className={` ${
+            isDarkModeActive ? "bg-gray-800" : "bg-slate-50"
+          } flex p-3  gap-4 rounded-lg`}
           key={comment.id}
         >
           <div className=" h-fit">
@@ -20,7 +31,11 @@ const VideoComments = ({ data }) => {
               className="rounded-full h-10 w-10"
             />
           </div>
-          <div className=" flex flex-col gap-2 ">
+          <div
+            className={` ${
+              isDarkModeActive ? "text-white" : ""
+            } flex flex-col gap-2 `}
+          >
             <div className="flex flex-col gap-1">
               <p className="font-medium">
                 {comment.snippet.topLevelComment.snippet.authorDisplayName}

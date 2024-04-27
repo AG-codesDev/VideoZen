@@ -2,10 +2,17 @@ import React from "react";
 import { FaRegBell } from "react-icons/fa";
 import { RiYoutubeLine } from "react-icons/ri";
 import { IoPeopleOutline } from "react-icons/io5";
+import { useSelector } from "react-redux";
 
 const ChannelDetails = ({ channelData }) => {
+  const isDarkModeActive = useSelector((store) => store.app.darkMode);
+
   return (
-    <div className="mt-12 flex flex-col lg:flex-row justify-around gap-5 items-center bg-slate-50 rounded-md p-3">
+    <div
+      className={` ${
+        isDarkModeActive ? "bg-gray-800 text-white" : "bg-slate-50"
+      } mt-8  flex flex-col lg:flex-row justify-around gap-5 items-center rounded-md px-3 py-8`}
+    >
       <div className="imgBox flex items-center justify-center ">
         <img
           src={channelData.snippet.thumbnails.high.url}
@@ -15,7 +22,7 @@ const ChannelDetails = ({ channelData }) => {
       </div>
 
       <div className="flex w-full md:w-4/5 flex-col">
-        <h1 className="heading font-bold text-4xl text-center ">
+        <h1 className="heading font-bold text-2xl md:text-4xl text-center ">
           {channelData.snippet.title}
         </h1>
 

@@ -1,11 +1,17 @@
 import React from "react";
 import { IoMdCheckmarkCircle } from "react-icons/io";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const SideVideos = ({ video }) => {
-  console.log(video);
+  const isDarkModeActive = useSelector((store) => store.app.darkMode);
+
   return (
-    <div className="sideVideo mt-5 my-4 gap-3 lg:gap-0 flex overflow-hidden justify-evenly">
+    <div
+      className={`${
+        isDarkModeActive ? "text-white" : ""
+      } sideVideo mt-5 my-4 gap-3 lg:gap-0 flex overflow-hidden justify-evenly`}
+    >
       <Link to={"/watch?v=" + video.id.videoId} className="">
         <div className="imgBox w-fit ">
           <img
@@ -24,7 +30,11 @@ const SideVideos = ({ video }) => {
         <Link to={"/channelPage?id=" + video.snippet.channelId}>
           <p className="channel-title flex items-center gap-1">
             {video.snippet.channelTitle}
-            <IoMdCheckmarkCircle className="mt-1 text-gray-700" />
+            <IoMdCheckmarkCircle
+              className={`${
+                isDarkModeActive ? "text-white" : "text-gray-700"
+              }mt-1`}
+            />
           </p>
         </Link>
       </div>

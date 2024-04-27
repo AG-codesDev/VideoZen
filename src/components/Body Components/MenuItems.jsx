@@ -48,9 +48,6 @@ const MenuItems = () => {
     }
   }, [currentLocation]);
 
-  // const [path, setPath] = useState("");
-  // useEffect;
-
   const navigate = useNavigate();
 
   const hanldeMenuItemClick = (e) => {
@@ -190,17 +187,25 @@ const MenuItems = () => {
     setIplTabActive(false);
   };
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
+  const isDarkModeActive = useSelector((store) => store.app.darkMode);
 
   return (
     <div
-      className={`lg:flex flex-col gap-7 shadow-lg border-gray-100 border-r-2 ml-0.5 bg-white h-screen rounded-sm  ease-in-out duration-300 border- fixed top-[3.5rem] ${
+      className={`${
+        isDarkModeActive ? "bg-gray-900 text-white shadow-gray-900" : "bg-white"
+      } lg:flex flex-col gap-7  shadow-lg h-screen rounded-sm  ease-in-out duration-300 fixed top-[3.5rem] ${
         isMenuOpen ? "translate-x-0" : "-translate-x-48"
       } `}
     >
-      <div className="flex flex-col px-2 mt-4 w-44 ">
-        <ul className="flex flex-col gap-8 md:gap-5">
+      <div
+        className={`
+          flex flex-col px-2 mt-4 w-44 `}
+      >
+        <ul className="flex flex-col gap-8 md:gap-6">
           <li
-            className={`flex gap-3 items-center hover:cursor-pointer  ${
+            className={` ${
+              isDarkModeActive ? "hover:bg-gray-800" : ""
+            } flex gap-3 items-center hover:cursor-pointer  ${
               homeTabActive ? "text-red-500" : ""
             } hover:bg-gray-100 p-2 rounded-md border-gray-200  `}
             onClick={(e) => handleHomeClick()}
@@ -210,7 +215,9 @@ const MenuItems = () => {
           </li>
 
           <li
-            className={`flex gap-3 items-center hover:cursor-pointer ${
+            className={` ${
+              isDarkModeActive ? "hover:bg-gray-800" : ""
+            } flex gap-3 items-center hover:cursor-pointer ${
               shortsTabActive ? "text-red-500" : ""
             } hover:bg-gray-100 p-2 rounded-md border-gray-200  `}
             onClick={(e) => hanldeMenuItemClick(e)}
@@ -219,7 +226,9 @@ const MenuItems = () => {
             Shorts
           </li>
           <li
-            className={`flex gap-3 items-center hover:cursor-pointer ${
+            className={` ${
+              isDarkModeActive ? "hover:bg-gray-800" : ""
+            } flex gap-3 items-center hover:cursor-pointer ${
               trendingTabActive ? "text-red-500" : ""
             } hover:bg-gray-100 p-2 rounded-md border-gray-200 `}
             onClick={(e) => hanldeMenuItemClick(e)}
@@ -228,7 +237,9 @@ const MenuItems = () => {
             Trending
           </li>
           <li
-            className={`flex gap-3 items-center hover:cursor-pointer ${
+            className={` ${
+              isDarkModeActive ? "hover:bg-gray-800" : ""
+            } flex gap-3 items-center hover:cursor-pointer ${
               musicTabActive ? "text-red-500" : ""
             } hover:bg-gray-100 p-2 rounded-md border-gray-200 `}
             onClick={(e) => hanldeMenuItemClick(e)}
@@ -238,7 +249,9 @@ const MenuItems = () => {
           </li>
 
           <li
-            className={`flex gap-3 items-center hover:cursor-pointer ${
+            className={` ${
+              isDarkModeActive ? "hover:bg-gray-800" : ""
+            } flex gap-3 items-center hover:cursor-pointer ${
               filmsTabActive ? "text-red-500" : ""
             } hover:bg-gray-100 p-2 rounded-md border-gray-200 `}
             onClick={(e) => hanldeMenuItemClick(e)}
@@ -248,7 +261,9 @@ const MenuItems = () => {
           </li>
 
           <li
-            className={`flex gap-3 items-center hover:cursor-pointer ${
+            className={` ${
+              isDarkModeActive ? "hover:bg-gray-800" : ""
+            } flex gap-3 items-center hover:cursor-pointer ${
               gamingTabActive ? "text-red-500" : ""
             } hover:bg-gray-100 p-2 rounded-md border-gray-200 `}
             onClick={(e) => hanldeMenuItemClick(e)}
@@ -257,7 +272,9 @@ const MenuItems = () => {
             Gaming
           </li>
           <li
-            className={`flex gap-3 items-center hover:cursor-pointer ${
+            className={` ${
+              isDarkModeActive ? "hover:bg-gray-800" : ""
+            } flex gap-3 items-center hover:cursor-pointer ${
               newsTabActive ? "text-red-500" : ""
             } hover:bg-gray-100 p-2 rounded-md border-gray-200 `}
             onClick={(e) => hanldeMenuItemClick(e)}
@@ -266,7 +283,9 @@ const MenuItems = () => {
             News
           </li>
           <li
-            className={`flex gap-3 items-center hover:cursor-pointer ${
+            className={` ${
+              isDarkModeActive ? "hover:bg-gray-800" : ""
+            } flex gap-3 items-center hover:cursor-pointer ${
               iplTabActive ? "text-red-500" : ""
             } hover:bg-gray-100 p-2 rounded-md border-gray-200 `}
             onClick={(e) => hanldeMenuItemClick(e)}
@@ -275,7 +294,9 @@ const MenuItems = () => {
             IPL
           </li>
           <li
-            className={`flex gap-3 items-center hover:cursor-pointer ${
+            className={` ${
+              isDarkModeActive ? "hover:bg-gray-800" : ""
+            } flex gap-3 items-center hover:cursor-pointer ${
               podcastTabActive ? "text-red-500" : ""
             } hover:bg-gray-100 p-2 rounded-md border-gray-200 `}
             onClick={(e) => hanldeMenuItemClick(e)}
@@ -284,7 +305,9 @@ const MenuItems = () => {
             Podcasts
           </li>
           <li
-            className={`flex gap-3 items-center hover:cursor-pointer ${
+            className={` ${
+              isDarkModeActive ? "hover:bg-gray-800" : ""
+            } flex gap-3 items-center hover:cursor-pointer ${
               codingTabActive ? "text-red-500" : ""
             } hover:bg-gray-100 p-2 rounded-md border-gray-200 `}
             onClick={(e) => hanldeMenuItemClick(e)}

@@ -7,9 +7,15 @@ const Error = () => {
       <span>
         <BiSolidMessageError className="text-9xl text-red-600" />
       </span>
-      <div className="flex flex-col font-bold">
-        <span>The fetch calls have exceeded the limit today :(</span>
-        <span>Please comeback after 24 hours 👋</span>
+      <div className="flex flex-col items-center font-bold">
+        <span className="text-center">
+          Either you have opened a LIVE video. Plzz play other video
+        </span>
+        <span>OR</span>
+        <span>
+          The fetch calls have exceeded the limit today :( <br /> Please
+          comeback after 24 hours 👋
+        </span>
       </div>
     </div>
   );

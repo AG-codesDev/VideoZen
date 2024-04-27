@@ -7,10 +7,10 @@ import { AiOutlineDislike } from "react-icons/ai";
 import { AiOutlineLike } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { YOUTUBE_CHANNEL_DATA } from "../../Utils/Constants";
+import { useSelector } from "react-redux";
 
 const VideoData = ({ snippet, statistics }) => {
-  // console.log(snippet);
-
+  const isDarkModeActive = useSelector((store) => store.app.darkMode);
   const [channelData, setChannelData] = useState([]);
 
   const getChannelLogo = async () => {
@@ -25,7 +25,13 @@ const VideoData = ({ snippet, statistics }) => {
 
   return (
     <div className="video-data flex flex-col w-full">
-      <h1 className="video-title lg:font-bold lg:text-xl">{snippet.title}</h1>
+      <h1
+        className={`${
+          isDarkModeActive ? "text-white" : ""
+        } video-title lg:font-bold lg:text-xl`}
+      >
+        {snippet.title}
+      </h1>
 
       <div className="flex flex-col md:flex-row items-center justify-between">
         <div className="channel-logo-subscribeBtn flex w-full my-3 items-center gap-3">
@@ -41,18 +47,30 @@ const VideoData = ({ snippet, statistics }) => {
             />
           </Link>
           <Link to={"/channelPage?id=" + snippet.channelId}>
-            <span className=" flex items-center text-lg lg:text-xl lg:font-mediuwm  gap-1">
+            <span
+              className={`${
+                isDarkModeActive ? "text-white" : ""
+              } flex items-center text-lg lg:text-xl lg:font-mediuwm  gap-1`}
+            >
               {snippet.channelTitle}
-              <IoMdCheckmarkCircle className="mt-1 text-gray-600" />
+              <IoMdCheckmarkCircle className="mt-1 text-white-600" />
             </span>
           </Link>
-          <button className="bg-black text-white px-3 py-1 md:py-2 font-medium text-[0.9rem] rounded-3xl">
+          <button
+            className={` ${
+              isDarkModeActive ? "bg-white text-black" : "text-white"
+            } bg-black px-3 py-1 md:py-2 font-medium text-[0.9rem] rounded-3xl`}
+          >
             Subscribe
           </button>
         </div>
 
         <div className="like-dislike-share-download w-full justify-between overflow-hidden  flex gap-6 ">
-          <span className="bg-slate-100 flex gap-3  rounded-2xl px-3 py-1">
+          <span
+            className={`${
+              isDarkModeActive ? "bg-gray-700 text-white" : "bg-slate-100"
+            } flex gap-3  rounded-2xl px-3 py-1`}
+          >
             <button className="flex gap-1 items-center ">
               <AiOutlineLike className=" text-xl" />{" "}
               <span className="text-sm">
@@ -63,15 +81,27 @@ const VideoData = ({ snippet, statistics }) => {
               <AiOutlineDislike className=" text-xl" />
             </button>
           </span>
-          <button className="bg-gray-100 flex rounded-2xl gap-1 px-3 py-1">
+          <button
+            className={`${
+              isDarkModeActive ? "bg-gray-700 text-white" : "bg-gray-100"
+            } flex rounded-2xl gap-1 px-3 py-1`}
+          >
             <PiShareFat className=" text-xl rounded-lg" />
             <span className="text-sm">Share</span>
           </button>
-          <button className="bg-gray-100 flex rounded-2xl gap-1 px-3 py-1">
+          <button
+            className={`${
+              isDarkModeActive ? "bg-gray-700 text-white" : "bg-gray-100"
+            } flex rounded-2xl gap-1 px-3 py-1`}
+          >
             <LiaDownloadSolid className=" text-xl" />{" "}
             <span className="text-sm">Download</span>
           </button>
-          <button className="bg-gray-100 px-1 text-xl rounded-full gap-1">
+          <button
+            className={`${
+              isDarkModeActive ? "bg-gray-700 text-white" : "bg-gray-100"
+            } bg-gray-100 px-1 text-xl hidden lg:block rounded-full gap-1`}
+          >
             <PiDotsThreeBold />
           </button>
         </div>

@@ -3,9 +3,10 @@ import { useState, useEffect } from "react";
 import { IoMdCheckmarkCircle } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { YOUTUBE_CHANNEL_DATA } from "../../Utils/Constants";
+import { useSelector } from "react-redux";
 
 const ExploreVideos = ({ video }) => {
-  // console.log(video.snippet);
+  const isDarkModeActive = useSelector((store) => store.app.darkMode);
   const [channelData, setChannelData] = useState([]);
 
   const getChannelLogo = async () => {
@@ -52,12 +53,18 @@ const ExploreVideos = ({ video }) => {
             key={video.id.videoId}
             className="title font-semibold w-72 h-12 overflow-hidden"
           >
-            <span>{video.snippet.title}</span>
+            <span className={`${isDarkModeActive ? "text-white" : ""}`}>
+              {video.snippet.title}
+            </span>
           </Link>
         </div>
 
         <div className="channelTitle-views-timePosted pl-12 mt-1">
-          <span className="flex items-center gap-1 text-gray-700">
+          <span
+            className={` ${
+              isDarkModeActive ? "text-slate-200" : ""
+            } flex items-center gap-1 text-gray-700`}
+          >
             {video.snippet.channelTitle}{" "}
             <IoMdCheckmarkCircle className="mt-1" />
           </span>

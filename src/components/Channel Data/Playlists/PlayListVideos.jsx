@@ -1,18 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { GoDotFill } from "react-icons/go";
+import { useSelector } from "react-redux";
 
 const PlayListVideos = ({ video }) => {
-  // console.log(video);
-
-  let currentTime = new Date();
-  let postedAt = new Date(video.snippet.publishedAt);
-  // console.log(Math.ceil((currentTime - postedAt) / (1000 * 60 * 60 * 24)));
-  // Math.ceil((currentTime - postedAt) / (1000 * 60 * 60 * 24));
-
+  const isDarkModeActive = useSelector((store) => store.app.darkMode);
   return (
     <Link to={"/watch?v=" + video.contentDetails.videoId}>
-      <div className="video-box flex gap-4 lg:mt-0 md:mt-0 hover:bg-gray-100 lg:ml-96 transition-all p-1">
+      <div
+        className={`${
+          isDarkModeActive
+            ? "text-white hover:bg-gray-800"
+            : "hover:bg-gray-100"
+        } video-box  flex gap-4 lg:mt-0 md:mt-0  lg:ml-96 transition-all p-1`}
+      >
         <span className="self-center my-4 font-semibold hidden lg:block">
           {video.snippet.position + 1}
         </span>

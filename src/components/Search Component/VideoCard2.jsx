@@ -3,9 +3,11 @@ import { IoMdCheckmarkCircle } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { YOUTUBE_CHANNEL_DATA } from "../../Utils/Constants";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const VideoCard2 = ({ video }) => {
   const [channelData, setChannelData] = useState([]);
+  const isDarkModeActive = useSelector((store) => store.app.darkMode);
 
   const { snippet } = video;
   // console.log(snippet);
@@ -22,8 +24,13 @@ const VideoCard2 = ({ video }) => {
   }, []);
 
   return (
-    // <Link to={"/watch?v=" + `${video.id.videoId}`}>
-    <div className="videoBox flex  flex-col sm:flex-row my-7  items-center md:items-start bg-gray-100 md:bg-white hover:bg-slate-50 transition-all">
+    <div
+      className={` ${
+        isDarkModeActive
+          ? "bg-gray-900 hover:bg-gray-800 text-white"
+          : "bg-gray-100 hover:bg-gray-200"
+      } videoBox flex  flex-col sm:flex-row my-7  items-center md:items-start transition-all`}
+    >
       <Link to={"/watch?v=" + `${video.id.videoId}`} className="imgxBox">
         <div className=" md:mr-5">
           <img
@@ -33,7 +40,7 @@ const VideoCard2 = ({ video }) => {
           />
         </div>
       </Link>
-      <div className="otherDetails flex flex-col my-2 gap-1 px-2 md:w-3/5 w-full">
+      <div className="otherDetails flex flex-col my-2 gap-5 px-2 md:w-3/5 w-full">
         <Link to={"/watch?v=" + `${video.id.videoId}`} className="">
           <span className="video-title text-md md:font-semibold">
             {snippet.title}
@@ -65,7 +72,6 @@ const VideoCard2 = ({ video }) => {
         </span>
       </div>
     </div>
-    // </Link>
   );
 };
 

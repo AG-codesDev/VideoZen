@@ -9,6 +9,7 @@ import VideoDescription from "./VideoDescription";
 import VideoComments from "./VideoComments";
 import SideVideos from "./SideVideos";
 import { YOUTUBE_SEARCH_RESULT_VIDEOS } from "../../Utils/Constants";
+import WatchPageShimmer from "../Shimmer/WatchPageShimmer";
 
 const WatchPage = () => {
   const [comments, setComments] = useState([]);
@@ -22,16 +23,8 @@ const WatchPage = () => {
     dispatch(closeMenu());
   }, []);
 
-  const showFull = (e) => {
-    e.target.classList.remove("h-20");
-  };
-  const showLess = (e) => {
-    e.target.parentElement.classList.add("h-20");
-  };
-
   const [searchParams] = useSearchParams();
   const videoId = searchParams.get("v");
-  // console.log(videoId);
 
   const getComments = async () => {
     const data = await fetch(
@@ -42,15 +35,10 @@ const WatchPage = () => {
 
     setComments(json.items);
   };
-  // console.log(comments);
-  // if (videoData.length === 0) {
-  //   return <div>holy shit</div>;
-  // }
 
   const getVideoData = async () => {
     const data = await fetch(VIDEO_DATA + "&id=" + videoId);
     const json = await data.json();
-    // console.log(json.items[0]);
 
     setVideoData(json.items[0]);
     setVideoTitle(json.items[0].snippet.tags[0]);
@@ -61,11 +49,11 @@ const WatchPage = () => {
       YOUTUBE_SEARCH_RESULT_VIDEOS + "&q=" + videoTitle + "&maxResults=100"
     );
     const json = await data.json();
-    // console.log(json);
     setSideVideos(json.items);
   };
 
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
+  const isDarkModeActive = useSelector((store) => store.app.darkMode);
 
   const { snippet, statistics } = videoData;
 
@@ -78,22 +66,22 @@ const WatchPage = () => {
     getSideVideo();
   }, [videoTitle]);
 
-  // console.log(sideVideos);
   if (sideVideos.length === 0) {
-    return "...";
+    return <WatchPageShimmer />;
   }
 
-  if (comments.length == 0) return "";
   return (
     <div
-      className={` flex flex-col lg:flex-row lg:mt-20 mt-14 ${
+      className={` ${
+        isDarkModeActive ? "bg-gray-900" : ""
+      } flex flex-col lg:flex-row lg:py-3 mt-14 ${
         isMenuOpen ? "lg:ml-48" : "lg:ml-10"
       }`}
     >
       <div className=" lg:w-[90%] mx-1">
         <VideoFrame videoId={videoId} />
         <VideoData snippet={snippet} statistics={statistics} />
-        <VideoDescription data={{ snippet, showFull, showLess }} />
+        <VideoDescription data={{ snippet }} />
         {comments.length > 0 ? (
           <VideoComments data={{ comments, snippet, statistics }} />
         ) : (
@@ -107,6 +95,7 @@ const WatchPage = () => {
         ))}
       </div>
     </div>
+    // <WatchPageShimmer />
   );
 };
 

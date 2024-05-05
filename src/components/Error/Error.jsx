@@ -13,8 +13,8 @@ const Error = () => {
         </span>
         <span>OR</span>
         <span>
-          The fetch calls have exceeded the limit today :( <br /> Please
-          comeback after 24 hours 👋
+          THE FETCH CALLS HAVE EXCEEDED THE LIMIT TODAY :( <br /> PLEASE
+          COMEBACK AFTER 24 HOURS 👋
         </span>
       </div>
     </div>

@@ -1,6 +1,4 @@
 
-![Screenshot](images/Screenshot.png)
-
 Live: https://videozen1.netlify.app/
 
 ➡️ FEATURES

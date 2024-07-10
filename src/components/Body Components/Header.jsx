@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { MdKeyboardVoice } from "react-icons/md";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -10,9 +10,23 @@ import { MdOutlineDarkMode } from "react-icons/md";
 import { FaUserCircle } from "react-icons/fa";
 import { auth, provider } from "../../Utils/firebase.utils";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+
+signOut(auth)
+  .then(() => {
+    // Sign-out successful.
+  })
+  .catch((error) => {
+    // An error happened.
+  });
 import { useHeadingFunctions } from "../../Utils/useHeadingFunction";
+import { useDispatch, useSelector } from "react-redux";
+import { addUser, removeUser } from "../../Utils/logintDetailsSlice";
 
 const Heading = () => {
+  const [photoURL, setPhotoURL] = useState(null);
+  const [isUserSignedIn, setIsUserSignedIn] = useState(false);
+
   const {
     handleMouseEnter,
     handleMouseLeave,
@@ -29,6 +43,8 @@ const Heading = () => {
     setSearchText,
     setShowSuggestion,
   } = useHeadingFunctions();
+
+  const dispatch = useDispatch();
 
   const InputElement = useRef();
   const hamBurger = useRef();
@@ -47,8 +63,7 @@ const Heading = () => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         const user = result.user;
-        console.log(user);
-        //   dispatch(addDetails(user));
+        // console.log("signed in");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -58,6 +73,47 @@ const Heading = () => {
       });
   };
 
+  // signout
+  const handleSignOut = () => {
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        // console.log("signed out");
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
+
+  // on authstate change handle
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      // this will be called whenever user signs in/ singns up
+      if (user) {
+        const uid = user.uid;
+
+        //when user signs in, add user detail in redux store
+        dispatch(addUser({ name: user.displayName, photo: user.photoURL }));
+        setIsUserSignedIn(true);
+      } else {
+        // this will be called whenever user logut
+        dispatch(removeUser());
+        setIsUserSignedIn(false);
+        // console.log("there is no user");
+      }
+    });
+  }, []);
+
+  const userData = useSelector((store) => store.loginInfo.info);
+
+  // console.log(photo);
+  // setPhotoURL(photo);
+  useEffect(() => {
+    if (userData) {
+      setPhotoURL(userData.photo);
+    }
+  }, [userData]);
+  // console.log(photoURL);
   return (
     <div
       className={`${
@@ -135,23 +191,32 @@ const Heading = () => {
               />
             )}
           </div>
-          <div
-            className=""
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            onClick={handleSignIn}
-          >
-            <FaUserCircle
-              className={`${
-                isDarkModeActive ? "text-white" : ""
-              } text-[1.6rem] lg:text-3xl cursor-pointer`}
-            />
-            {isLoginToolTipActive && (
-              <span className="absolute p-1 text-xs right-1 rounded-sm bg-gray-700 text-white">
-                Login
-              </span>
-            )}
-          </div>
+
+          {isUserSignedIn && (
+            <div className="profile-pic">
+              <img
+                src={photoURL}
+                className="rounded-full h-10 w-10"
+                alt="profilepic"
+              />
+            </div>
+          )}
+
+          {!isUserSignedIn ? (
+            <button
+              className="bg-green-500 text-white p-2 text-sm font-medium rounded-md"
+              onClick={handleSignIn}
+            >
+              Login
+            </button>
+          ) : (
+            <button
+              className="bg-red-500 text-white p-2 text-sm font-medium rounded-md"
+              onClick={handleSignOut}
+            >
+              Logout
+            </button>
+          )}
         </div>
       </div>
 

@@ -6,14 +6,15 @@ const loginDetailsSlice = createSlice({
     info: [],
   },
   reducers: {
-    addDetails: (state, action) => {
+    addUser: (state, action) => {
       state.info = action.payload;
+      // console.log(action);
     },
-    removeDetails: (state, action) => {
+    removeUser: (state, action) => {
       state.info = [];
     },
   },
 });
 
-export const { addDetails, removeDetails } = loginDetailsSlice.actions;
+export const { addUser, removeUser } = loginDetailsSlice.actions;
 export default loginDetailsSlice.reducer;

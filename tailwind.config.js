@@ -5,6 +5,7 @@ export default {
     extend: {
       fontFamily: {
         LilitaOne: ["Lilita One", "sans-serif"],
+        Pacifico: ["Pacifico", "cursive"],
       },
     },
   },

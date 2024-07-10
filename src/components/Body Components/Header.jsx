@@ -1,69 +1,35 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useRef } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { MdKeyboardVoice } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { toggleDarkMode, toggleMenu } from "../../Utils/appSlice";
-import { YOUTUBE_SUGGESTION_API } from "../../Utils/Constants";
 import { CiSearch } from "react-icons/ci";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import { MdDarkMode } from "react-icons/md";
 import { MdOutlineDarkMode } from "react-icons/md";
 import { FaUserCircle } from "react-icons/fa";
 import { auth, provider } from "../../Utils/firebase.utils";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { useHeadingFunctions } from "../../Utils/useHeadingFunction";
 
 const Heading = () => {
-  const [suggestions, setSuggestions] = useState([]);
-  const [showSuggestion, setShowSuggestion] = useState();
-  const [isLoginToolTipActive, setLoginToolTipActive] = useState(false);
+  const {
+    handleMouseEnter,
+    handleMouseLeave,
+    isLoginToolTipActive,
+    isDarkModeActive,
+    handleDarkModeSwitch,
+    handleHamburgerClick,
+    suggestions,
+    showSuggestion,
+    handleSuggestionClick,
+    onSearchBtnClick,
+    handleEnterPress,
+    searchText,
+    setSearchText,
+    setShowSuggestion,
+  } = useHeadingFunctions();
 
-  const navigate = useNavigate();
-
-  const isDarkModeActive = useSelector((store) => store.app.darkMode);
-  const handleDarkModeSwitch = () => {
-    dispatch(toggleDarkMode());
-  };
-  const dispatch = useDispatch();
-  const handleHamburgerClick = () => {
-    dispatch(toggleMenu());
-  };
-
-  const [searchText, setSearchText] = useState("");
-
-  useEffect(() => {
-    let timer = setTimeout(() => {
-      getSuggestions();
-    }, 300);
-
-    return () => clearTimeout(timer);
-  }, [searchText]);
-
-  const getSuggestions = async () => {
-    const data = await fetch(YOUTUBE_SUGGESTION_API + "&q=" + searchText);
-    const result = await data.json();
-    setSuggestions(result[1]);
-  };
-
-  const handleSuggestionClick = async (e) => {
-    setShowSuggestion(false);
-    setSearchText(e.target.innerText);
-  };
-
-  const onSearchBtnClick = async () => {
-    if (searchText !== "") {
-      navigate(`/search?result=` + searchText);
-      setShowSuggestion(false);
-    }
-  };
-
-  const handleEnterPress = async (e) => {
-    if (e.key === "Enter" && searchText !== "") {
-      navigate(`/search?result=` + searchText);
-      setShowSuggestion(false);
-    }
-  };
   const InputElement = useRef();
   const hamBurger = useRef();
   const Icon = useRef();
@@ -72,14 +38,6 @@ const Heading = () => {
     InputElement.current.classList.add("flex");
     hamBurger.current.classList.remove("hidden");
     Icon.current.classList.toggle("hidden");
-  };
-
-  const handleMouseEnter = () => {
-    setLoginToolTipActive(true);
-  };
-
-  const handleMouseLeave = () => {
-    setLoginToolTipActive(false);
   };
 
   // FIREBASE LOGIN
@@ -127,9 +85,10 @@ const Heading = () => {
             <span
               className={`${
                 isDarkModeActive ? "text-white" : "text-black"
-              } font-LilitaOne lg:text-2xl text-xl mt-1`}
+              } font-LilitaOne lg:text-2xl text-xl mt-1 flex flex-col`}
             >
-              VideoZen
+              <span>VideoZen</span>
+              <span className="text-xs font-Pacifico"> - by Apurva Gaurav</span>
             </span>
           </div>
         </div>

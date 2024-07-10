@@ -10,10 +10,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import { MdDarkMode } from "react-icons/md";
 import { MdOutlineDarkMode } from "react-icons/md";
+import { FaUserCircle } from "react-icons/fa";
+import { auth, provider } from "../../Utils/firebase.utils";
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 const Heading = () => {
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestion, setShowSuggestion] = useState();
+  const [isLoginToolTipActive, setLoginToolTipActive] = useState(false);
+
   const navigate = useNavigate();
 
   const isDarkModeActive = useSelector((store) => store.app.darkMode);
@@ -67,6 +72,32 @@ const Heading = () => {
     InputElement.current.classList.add("flex");
     hamBurger.current.classList.remove("hidden");
     Icon.current.classList.toggle("hidden");
+  };
+
+  const handleMouseEnter = () => {
+    setLoginToolTipActive(true);
+  };
+
+  const handleMouseLeave = () => {
+    setLoginToolTipActive(false);
+  };
+
+  // FIREBASE LOGIN
+  const handleSignIn = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        const user = result.user;
+        console.log(user);
+        //   dispatch(addDetails(user));
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        const email = error.customData.email;
+        const credential = GoogleAuthProvider.credentialFromError(error);
+      });
   };
 
   return (
@@ -125,7 +156,7 @@ const Heading = () => {
           />
           <MdKeyboardVoice className=" bg-gray-200 text-[2.5rem] p-2 ml-5 rounded-full hidden lg:block" />
         </div>
-        <div className="videoadd-notification-user justify-around gap-1 flex items-center">
+        <div className="darkmode-login justify-around gap-6  flex items-center">
           <FaSearch
             className={` ${
               isDarkModeActive ? "text-white" : ""
@@ -143,6 +174,23 @@ const Heading = () => {
                 className="text-[1.6rem] lg:text-3xl cursor-pointer "
                 onClick={() => handleDarkModeSwitch()}
               />
+            )}
+          </div>
+          <div
+            className=""
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            onClick={handleSignIn}
+          >
+            <FaUserCircle
+              className={`${
+                isDarkModeActive ? "text-white" : ""
+              } text-[1.6rem] lg:text-3xl cursor-pointer`}
+            />
+            {isLoginToolTipActive && (
+              <span className="absolute p-1 text-xs right-1 rounded-sm bg-gray-700 text-white">
+                Login
+              </span>
             )}
           </div>
         </div>

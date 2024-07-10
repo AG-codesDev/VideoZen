@@ -1,4 +1,3 @@
-// import Body from "./components/Body Components/Body";
 import Body from "./components/Body Components/Body";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import WatchPage from "./components/Watch Page/WatchPage";
@@ -8,6 +7,7 @@ import ChannelPage from "./components/Channel Data/ChannelPage";
 import MainContainer from "./components/Explore Menu/MainContainer";
 import PlayListPage from "./components/Channel Data/Playlists/PlayListPage";
 import Error from "./components/Error/Error";
+import SignUpLogin from "./components/Signup Login/SignUpLogin";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/playlistPage",
         element: <PlayListPage />,
+      },
+      {
+        path: "/signUp-login",
+        element: <SignUpLogin />,
       },
     ],
   },

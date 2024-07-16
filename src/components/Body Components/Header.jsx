@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { MdKeyboardVoice } from "react-icons/md";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { IoMdLogIn } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
@@ -10,7 +11,10 @@ import { MdOutlineDarkMode } from "react-icons/md";
 import { FaUserCircle } from "react-icons/fa";
 import { auth, provider } from "../../Utils/firebase.utils";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { useHeadingFunctions } from "../../Utils/useHeadingFunction";
+import { useDispatch, useSelector } from "react-redux";
+import { addUser, removeUser } from "../../Utils/logintDetailsSlice";
 
 signOut(auth)
   .then(() => {
@@ -19,18 +23,12 @@ signOut(auth)
   .catch((error) => {
     // An error happened.
   });
-import { useHeadingFunctions } from "../../Utils/useHeadingFunction";
-import { useDispatch, useSelector } from "react-redux";
-import { addUser, removeUser } from "../../Utils/logintDetailsSlice";
 
 const Heading = () => {
   const [photoURL, setPhotoURL] = useState(null);
   const [isUserSignedIn, setIsUserSignedIn] = useState(false);
 
   const {
-    handleMouseEnter,
-    handleMouseLeave,
-    isLoginToolTipActive,
     isDarkModeActive,
     handleDarkModeSwitch,
     handleHamburgerClick,
@@ -99,21 +97,16 @@ const Heading = () => {
         // this will be called whenever user logut
         dispatch(removeUser());
         setIsUserSignedIn(false);
-        // console.log("there is no user");
       }
     });
   }, []);
 
   const userData = useSelector((store) => store.loginInfo.info);
-
-  // console.log(photo);
-  // setPhotoURL(photo);
   useEffect(() => {
     if (userData) {
       setPhotoURL(userData.photo);
     }
   }, [userData]);
-  // console.log(photoURL);
   return (
     <div
       className={`${
@@ -204,17 +197,27 @@ const Heading = () => {
 
           {!isUserSignedIn ? (
             <button
-              className="bg-green-500 text-white p-2 text-sm font-medium rounded-md"
+              className="bg-green-600 text-white p-2 text-sm font-medium rounded-md"
               onClick={handleSignIn}
             >
-              Login
+              <span className="flex gap-2 items-center">
+                <span>Login</span>
+                <span>
+                  <FaUserCircle size={20} />
+                </span>
+              </span>
             </button>
           ) : (
             <button
-              className="bg-red-500 text-white p-2 text-sm font-medium rounded-md"
+              className="bg-red-600 text-white p-2 text-sm font-medium rounded-md"
               onClick={handleSignOut}
             >
-              Logout
+              <span className="flex gap-1 items-center">
+                <span>Logout</span>
+                <span>
+                  <IoMdLogIn size={20} />
+                </span>
+              </span>
             </button>
           )}
         </div>

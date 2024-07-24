@@ -23,17 +23,61 @@ const HomeVideoContainer = () => {
   if (homeVideos.length === 0) {
     return <HomeShimmer />;
   }
+  const buttons = [
+    "All",
+    "Music",
+    "Trailers",
+    "Gaming",
+    "Live",
+    "News",
+    "Cricket",
+    "Sports",
+    "New to You",
+    "Watched",
+    "Virat Kohli",
+    "Comedy",
+    "Finanace",
+    "Shopping",
+    "Akshay Saini",
+    "Code With Harry",
+    "Rohit Sharma",
+    "T20 WC 2024",
+    "Crime",
+    "Hiring",
+    "TCS",
+    "Accenture",
+    "Cognizant",
+    "Zerodha",
+    "Mahendra Singh Dhoni",
+    "Thala for a reason",
+  ];
   return (
     <div
       className={` ${
-        isDarkModeActive ? "bg-gray-900" : ""
-      } flex flex-wrap mt-12 lg:mt-16  gap-2 justify-evenly ease-in-out py-5 lg:py-3 ${
+        isDarkModeActive ? "bg-zinc-900" : ""
+      } flex flex-col mt-12 lg:mt-[4.7rem]  gap-2 ease-in-out py-5 lg:py-3 ${
         isMenuOpen ? "lg:w-[88%] lg:ml-[11rem]" : ""
       }`}
     >
-      {homeVideos.map((video) => (
-        <VideoCard videoInfo={video} key={video.id} />
-      ))}
+      <div className="no-scrollbar mx-5 my-2 flex flex-nowrap scroll-smooth gap-5 overflow-x-auto">
+        {buttons.map((btn) => (
+          <button
+            key={btn}
+            className={`${
+              isDarkModeActive
+                ? "bg-[#272727] text-white hover:bg-zinc-700"
+                : ""
+            } flex-shrink-0 basis-auto w-auto font-semibold bg-gray-200 px-3 py-1 rounded-lg hover:bg-gray-300 transition-all`}
+          >
+            {btn}
+          </button>
+        ))}
+      </div>
+      <div className="flex flex-wrap gap-2 justify-evenly">
+        {homeVideos.map((video) => (
+          <VideoCard videoInfo={video} key={video.id} />
+        ))}
+      </div>
     </div>
   );
 };

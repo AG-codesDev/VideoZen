@@ -110,7 +110,7 @@ const Heading = () => {
   return (
     <div
       className={`${
-        isDarkModeActive ? "bg-gray-900" : "bg-white"
+        isDarkModeActive ? "bg-zinc-900" : "bg-white"
       } flex flex-col p-3 justify-between shadow-md lg:p-3 fixed top-0 w-full z-10`}
     >
       <div className="headeronly flex justify-between w-full">
@@ -149,7 +149,7 @@ const Heading = () => {
             type="text"
             placeholder="Search"
             className={`${
-              isDarkModeActive ? "bg-gray-900 text-white" : "bg-white"
+              isDarkModeActive ? "bg-zinc-900 text-white" : "bg-white"
             } border-2 border-gray-300 w-full rounded-l-full py-[0.4rem] px-3`}
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
@@ -225,8 +225,8 @@ const Heading = () => {
 
       <div
         className={` ${
-          isDarkModeActive ? "bg-gray-800 text-white" : "bg-white"
-        } suggestions hidden lg:block lg:ml-[29rem] w-full lg:w-[40.4rem] shadow-xl absolute top-12`}
+          isDarkModeActive ? "bg-zinc-900 text-white" : "bg-white"
+        } suggestions hidden lg:block lg:ml-[26rem] w-full lg:w-[40rem] shadow-xl rounded-md absolute top-12`}
         onMouseLeave={() => setShowSuggestion(false)}
         onMouseEnter={() => setShowSuggestion(true)}
       >
@@ -239,7 +239,7 @@ const Heading = () => {
             >
               <p
                 className={` ${
-                  isDarkModeActive ? "hover:bg-gray-700" : "hover:bg-gray-100"
+                  isDarkModeActive ? "hover:bg-zinc-700" : "hover:bg-gray-100"
                 } my-2 p-2 hover:bg-gray-100 hover:cursor`}
               >
                 <span className="flex items-center gap-2">

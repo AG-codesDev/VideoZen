@@ -12,7 +12,7 @@ const VideoDescription = ({ data }) => {
   return (
     <div
       className={` ${
-        isDarkModeActive ? "bg-gray-700 text-white" : "bg-gray-200"
+        isDarkModeActive ? "bg-zinc-700 text-white" : "bg-gray-200"
       } description h-20 mt-2 mb-6  overflow-hidden p-3 rounded-xl text-sm leading-6`}
       onClick={showFull}
     >

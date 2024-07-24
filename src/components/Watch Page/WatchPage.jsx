@@ -73,7 +73,7 @@ const WatchPage = () => {
   return (
     <div
       className={` ${
-        isDarkModeActive ? "bg-gray-900" : ""
+        isDarkModeActive ? "bg-zinc-900" : ""
       } flex flex-col lg:flex-row lg:py-3 mt-14 ${
         isMenuOpen ? "lg:ml-48" : "lg:ml-10"
       }`}

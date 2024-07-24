@@ -10,9 +10,9 @@ const PlayListVideos = ({ video }) => {
       <div
         className={`${
           isDarkModeActive
-            ? "text-white hover:bg-gray-800"
+            ? "text-white hover:bg-zinc-800"
             : "hover:bg-gray-100"
-        } video-box  flex gap-4 lg:mt-0 md:mt-0  lg:ml-96 transition-all p-1`}
+        } video-box flex gap-4 lg:mt-0 md:mt-0  lg:ml-96 transition-all p-1`}
       >
         <span className="self-center my-4 font-semibold hidden lg:block">
           {video.snippet.position + 1}
@@ -32,9 +32,6 @@ const PlayListVideos = ({ video }) => {
           <p className="text-sm  h-10 overflow-y-clip hidden lg:block">
             {video.snippet.description}
           </p>
-          {/* <GoDotFill className="text-black mt-1 mx-1 text-[0.5rem]" /> */}
-
-          {/* <p>{Math.ceil((currentTime - postedAt) / (1000 * 60 * 60 * 24))}</p> */}
         </div>
       </div>
     </Link>

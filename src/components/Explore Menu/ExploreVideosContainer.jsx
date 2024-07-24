@@ -20,7 +20,7 @@ const ExploreVideosContainer = () => {
   return (
     <div
       className={` ${
-        isDarkModeActive ? "bg-gray-900" : ""
+        isDarkModeActive ? "bg-zinc-900" : ""
       } flex flex-wrap mt-12 lg:mt-16 gap-2 justify-evenly py-5 lg:py-3 ${
         isMenuOpen ? "lg:w-[88%] lg:ml-[11rem]" : ""
       }`}

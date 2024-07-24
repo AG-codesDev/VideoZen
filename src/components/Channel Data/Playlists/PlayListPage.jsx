@@ -36,14 +36,14 @@ const PlayListPage = () => {
 
   return (
     <div
-      className={` mt-14 py-2 flex flex-col lg:flex-row lg:gap-7 ${
-        isMenuOpen ? "lg:ml-48" : "lg:ml-16"
-      }`}
+      className={` mt-16 py-2 flex flex-col $${
+        isDarkModeActive ? "bg-zinc-900" : "bg-white"
+      } lg:flex-row lg:gap-7 h-full ${isMenuOpen ? "lg:ml-48" : "lg:ml-16"}`}
     >
       <PlaylistSideInfo />
       <div
         className={`${
-          isDarkModeActive ? "bg-gray-900" : "bg-white"
+          isDarkModeActive ? "bg-zinc-900" : "bg-white"
         } flex h-full flex-col lg:mt-4`}
       >
         {allPlayListVideos.map((video) => (

@@ -66,24 +66,24 @@ const HomeShimmer = () => {
         <div className="  flex flex-col my-2 gap-2" key={card}>
           <div
             className={`${
-              isDarkModeActive ? "bg-gray-700" : "bg-gray-300"
+              isDarkModeActive ? "bg-zinc-700" : "bg-gray-300"
             } imgbox rounded-xl lg:w-[22rem] w-[24rem]  animate-pulse h-52 `}
           ></div>
           <div className="flex gap-4">
             <div
               className={`${
-                isDarkModeActive ? "bg-gray-700" : "bg-gray-300"
+                isDarkModeActive ? "bg-zinc-700" : "bg-gray-300"
               } logo rounded-full animate-pulse w-10 h-10`}
             ></div>
             <div className="flex flex-col gap-2">
               <div
                 className={` ${
-                  isDarkModeActive ? "bg-gray-700" : "bg-gray-300"
+                  isDarkModeActive ? "bg-zinc-700" : "bg-gray-300"
                 }  w-48 animate-pulse h-5`}
               ></div>
               <div
                 className={` ${
-                  isDarkModeActive ? "bg-gray-700" : "bg-gray-300"
+                  isDarkModeActive ? "bg-zinc-700" : "bg-gray-300"
                 } w-32 animate-pulse h-5`}
               ></div>
             </div>

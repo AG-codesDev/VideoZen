@@ -20,7 +20,7 @@ const VideoComments = ({ data }) => {
       {comments.map((comment) => (
         <div
           className={` ${
-            isDarkModeActive ? "bg-gray-800" : "bg-slate-50"
+            isDarkModeActive ? "bg-zinc-800" : "bg-slate-50"
           } flex p-3  gap-4 rounded-lg`}
           key={comment.id}
         >

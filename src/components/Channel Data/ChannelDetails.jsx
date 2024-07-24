@@ -10,7 +10,7 @@ const ChannelDetails = ({ channelData }) => {
   return (
     <div
       className={` ${
-        isDarkModeActive ? "bg-gray-800 text-white" : "bg-slate-50"
+        isDarkModeActive ? "bg-zinc-900 text-white" : "bg-slate-50"
       } mt-8  flex flex-col lg:flex-row justify-around gap-5 items-center rounded-md px-3 py-8`}
     >
       <div className="imgBox flex items-center justify-center ">

@@ -49,7 +49,7 @@ const HomeVideoContainer = () => {
     "Cognizant",
     "Zerodha",
     "Mahendra Singh Dhoni",
-    "Thala for a reason",
+    "Jasprit Bumrah",
   ];
   return (
     <div

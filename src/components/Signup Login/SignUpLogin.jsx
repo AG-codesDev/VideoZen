@@ -5,7 +5,7 @@ const SignUpLogin = () => {
   const isDarkModeActive = useSelector((store) => store.app.darkMode);
 
   return (
-    <div className={`${isDarkModeActive ? "bg-gray-900" : "bg-white"}`}></div>
+    <div className={`${isDarkModeActive ? "bg-zinc-900" : "bg-white"}`}></div>
   );
 };
 

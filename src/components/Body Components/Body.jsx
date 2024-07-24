@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 const Body = () => {
   const isDarkModeActive = useSelector((store) => store.app.darkMode);
   return (
-    <div className={`${isDarkModeActive ? "bg-gray-900" : ""}`}>
+    <div className={`${isDarkModeActive ? "bg-zinc-900" : ""}`}>
       <Header />
       <Sidebar />
       <Outlet />

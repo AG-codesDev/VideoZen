@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { IoHomeOutline } from "react-icons/io5";
+import { IoHome } from "react-icons/io5";
 import { SiShortcut } from "react-icons/si";
 import { IoMdTrendingUp } from "react-icons/io";
-import { IoMusicalNoteOutline } from "react-icons/io5";
+import { IoMusicalNote } from "react-icons/io5";
 import { PiFilmSlateBold } from "react-icons/pi";
 import { FaRegNewspaper } from "react-icons/fa6";
 import { IoGameController } from "react-icons/io5";
@@ -192,31 +192,31 @@ const MenuItems = () => {
   return (
     <div
       className={`${
-        isDarkModeActive ? "bg-gray-900 text-white shadow-gray-900" : "bg-white"
+        isDarkModeActive ? "bg-zinc-900 text-white shadow-gray-900" : "bg-white"
       } lg:flex flex-col gap-7  shadow-lg h-screen rounded-sm  ease-in-out duration-300 fixed top-[3.5rem] ${
         isMenuOpen ? "translate-x-0" : "-translate-x-48"
       } `}
     >
       <div
         className={`
-          flex flex-col px-2 mt-4 w-44 `}
+          flex  h-full flex-col px-2 mt-4 w-44 `}
       >
-        <ul className="flex flex-col gap-8 md:gap-6">
+        <ul className="flex flex-col h-full justify-evenly  gap-8 md:gap-6">
           <li
             className={` ${
-              isDarkModeActive ? "hover:bg-gray-800" : ""
+              isDarkModeActive ? "hover:bg-zinc-800 transition-all" : ""
             } flex gap-3 items-center hover:cursor-pointer  ${
               homeTabActive ? "text-red-500" : ""
             } hover:bg-gray-100 p-2 rounded-md border-gray-200  `}
             onClick={(e) => handleHomeClick()}
           >
-            <IoHomeOutline className="text-xl" />
+            <IoHome className="text-xl" />
             Home
           </li>
 
           <li
             className={` ${
-              isDarkModeActive ? "hover:bg-gray-800" : ""
+              isDarkModeActive ? "hover:bg-zinc-800 transition-all" : ""
             } flex gap-3 items-center hover:cursor-pointer ${
               shortsTabActive ? "text-red-500" : ""
             } hover:bg-gray-100 p-2 rounded-md border-gray-200  `}
@@ -227,7 +227,7 @@ const MenuItems = () => {
           </li>
           <li
             className={` ${
-              isDarkModeActive ? "hover:bg-gray-800" : ""
+              isDarkModeActive ? "hover:bg-zinc-800 transition-all" : ""
             } flex gap-3 items-center hover:cursor-pointer ${
               trendingTabActive ? "text-red-500" : ""
             } hover:bg-gray-100 p-2 rounded-md border-gray-200 `}
@@ -238,19 +238,19 @@ const MenuItems = () => {
           </li>
           <li
             className={` ${
-              isDarkModeActive ? "hover:bg-gray-800" : ""
+              isDarkModeActive ? "hover:bg-zinc-800 transition-all" : ""
             } flex gap-3 items-center hover:cursor-pointer ${
               musicTabActive ? "text-red-500" : ""
             } hover:bg-gray-100 p-2 rounded-md border-gray-200 `}
             onClick={(e) => hanldeMenuItemClick(e)}
           >
-            <IoMusicalNoteOutline className="" />
+            <IoMusicalNote className="" />
             Music
           </li>
 
           <li
             className={` ${
-              isDarkModeActive ? "hover:bg-gray-800" : ""
+              isDarkModeActive ? "hover:bg-zinc-800 transition-all" : ""
             } flex gap-3 items-center hover:cursor-pointer ${
               filmsTabActive ? "text-red-500" : ""
             } hover:bg-gray-100 p-2 rounded-md border-gray-200 `}
@@ -262,7 +262,7 @@ const MenuItems = () => {
 
           <li
             className={` ${
-              isDarkModeActive ? "hover:bg-gray-800" : ""
+              isDarkModeActive ? "hover:bg-zinc-800 transition-all" : ""
             } flex gap-3 items-center hover:cursor-pointer ${
               gamingTabActive ? "text-red-500" : ""
             } hover:bg-gray-100 p-2 rounded-md border-gray-200 `}
@@ -273,7 +273,7 @@ const MenuItems = () => {
           </li>
           <li
             className={` ${
-              isDarkModeActive ? "hover:bg-gray-800" : ""
+              isDarkModeActive ? "hover:bg-zinc-800 transition-all" : ""
             } flex gap-3 items-center hover:cursor-pointer ${
               newsTabActive ? "text-red-500" : ""
             } hover:bg-gray-100 p-2 rounded-md border-gray-200 `}
@@ -284,18 +284,7 @@ const MenuItems = () => {
           </li>
           <li
             className={` ${
-              isDarkModeActive ? "hover:bg-gray-800" : ""
-            } flex gap-3 items-center hover:cursor-pointer ${
-              iplTabActive ? "text-red-500" : ""
-            } hover:bg-gray-100 p-2 rounded-md border-gray-200 `}
-            onClick={(e) => hanldeMenuItemClick(e)}
-          >
-            <FaLaptopCode className="" />
-            IPL
-          </li>
-          <li
-            className={` ${
-              isDarkModeActive ? "hover:bg-gray-800" : ""
+              isDarkModeActive ? "hover:bg-zinc-800 transition-all" : ""
             } flex gap-3 items-center hover:cursor-pointer ${
               podcastTabActive ? "text-red-500" : ""
             } hover:bg-gray-100 p-2 rounded-md border-gray-200 `}
@@ -306,7 +295,7 @@ const MenuItems = () => {
           </li>
           <li
             className={` ${
-              isDarkModeActive ? "hover:bg-gray-800" : ""
+              isDarkModeActive ? "hover:bg-zinc-800 transition-all" : ""
             } flex gap-3 items-center hover:cursor-pointer ${
               codingTabActive ? "text-red-500" : ""
             } hover:bg-gray-100 p-2 rounded-md border-gray-200 `}

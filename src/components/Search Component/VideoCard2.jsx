@@ -27,7 +27,7 @@ const VideoCard2 = ({ video }) => {
     <div
       className={` ${
         isDarkModeActive
-          ? "bg-gray-900 hover:bg-gray-800 text-white"
+          ? "bg-zinc-900 hover:bg-zinc-900 text-white"
           : "bg-gray-100 hover:bg-gray-200"
       } videoBox flex  flex-col sm:flex-row my-7  items-center md:items-start transition-all`}
     >

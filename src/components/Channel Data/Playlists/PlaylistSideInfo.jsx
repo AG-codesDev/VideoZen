@@ -13,7 +13,7 @@ const PlaylistSideInfo = ({}) => {
 
   return (
     <div>
-      <div className="sideInfo flex flex-col w-screen lg:fixed bg-gradient-to-b from-gray-800 lg:w-fit to-gray-500 lg:rounded-xl lg:h-[38rem] h-fit lg:mt-5">
+      <div className="sideInfo flex flex-col w-screen lg:fixed bg-gradient-to-b from-zinc-800 lg:w-fit to-zinc-500 lg:rounded-xl lg:h-[38rem] h-fit lg:mt-5">
         <img
           src={state.snippet.thumbnails.medium.url}
           className="lg:h-52 w-full  lg:rounded-xl"

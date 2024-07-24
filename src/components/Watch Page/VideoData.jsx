@@ -68,7 +68,7 @@ const VideoData = ({ snippet, statistics }) => {
         <div className="like-dislike-share-download w-full justify-between overflow-hidden  flex gap-6 ">
           <span
             className={`${
-              isDarkModeActive ? "bg-gray-700 text-white" : "bg-slate-100"
+              isDarkModeActive ? "bg-zinc-700 text-white" : "bg-slate-100"
             } flex gap-3  rounded-2xl px-3 py-1`}
           >
             <button className="flex gap-1 items-center ">
@@ -83,7 +83,7 @@ const VideoData = ({ snippet, statistics }) => {
           </span>
           <button
             className={`${
-              isDarkModeActive ? "bg-gray-700 text-white" : "bg-gray-100"
+              isDarkModeActive ? "bg-zinc-700 text-white" : "bg-gray-100"
             } flex rounded-2xl gap-1 px-3 py-1`}
           >
             <PiShareFat className=" text-xl rounded-lg" />
@@ -91,7 +91,7 @@ const VideoData = ({ snippet, statistics }) => {
           </button>
           <button
             className={`${
-              isDarkModeActive ? "bg-gray-700 text-white" : "bg-gray-100"
+              isDarkModeActive ? "bg-zinc-700 text-white" : "bg-gray-100"
             } flex rounded-2xl gap-1 px-3 py-1`}
           >
             <LiaDownloadSolid className=" text-xl" />{" "}
@@ -99,7 +99,7 @@ const VideoData = ({ snippet, statistics }) => {
           </button>
           <button
             className={`${
-              isDarkModeActive ? "bg-gray-700 text-white" : "bg-gray-100"
+              isDarkModeActive ? "bg-zinc-700 text-white" : "bg-gray-100"
             } bg-gray-100 px-1 text-xl hidden lg:block rounded-full gap-1`}
           >
             <PiDotsThreeBold />

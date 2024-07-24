@@ -48,22 +48,7 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return (
-    <div className="">
-      <RouterProvider router={router} />
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
-
-/*
-Heading
-Body
-  - Sidebar
-    - MenuItems
-  - MainContainer
-    -videoContainer
-    -videoCard
-
-*/

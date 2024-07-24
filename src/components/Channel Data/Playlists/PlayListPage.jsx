@@ -38,7 +38,9 @@ const PlayListPage = () => {
     <div
       className={` mt-16 py-2 flex flex-col $${
         isDarkModeActive ? "bg-zinc-900" : "bg-white"
-      } lg:flex-row lg:gap-7 h-full ${isMenuOpen ? "lg:ml-48" : "lg:ml-16"}`}
+      } lg:flex-row lg:gap-7 ${
+        allPlayListVideos.length > 4 ? "h-full" : "h-[100vh]"
+      } ${isMenuOpen ? "lg:ml-48" : "lg:ml-16"}`}
     >
       <PlaylistSideInfo />
       <div

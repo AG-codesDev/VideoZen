@@ -89,7 +89,13 @@ const WatchPage = () => {
         )}
       </div>
       <div className="mt-3 px-1">
-        <h1 className="lg:ml-7 font-semibold text-lg">Related Videos</h1>
+        <h1
+          className={`${
+            isDarkModeActive ? "text-white" : ""
+          } lg:ml-7 font-semibold text-lg`}
+        >
+          Related Videos
+        </h1>
         {sideVideos.map((video) => (
           <SideVideos video={video} key={video.id.videoId} />
         ))}

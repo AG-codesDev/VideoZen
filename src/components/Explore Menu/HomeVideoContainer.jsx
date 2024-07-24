@@ -64,9 +64,7 @@ const HomeVideoContainer = () => {
           <button
             key={btn}
             className={`${
-              isDarkModeActive
-                ? "bg-[#272727] text-white hover:bg-zinc-700"
-                : ""
+              isDarkModeActive ? "bg-zinc-800 text-white hover:bg-zinc-700" : ""
             } flex-shrink-0 basis-auto w-auto font-semibold bg-gray-200 px-3 py-1 rounded-lg hover:bg-gray-300 transition-all`}
           >
             {btn}

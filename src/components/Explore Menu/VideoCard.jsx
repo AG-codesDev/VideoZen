@@ -4,18 +4,24 @@ import { GoDotFill } from "react-icons/go";
 import { YOUTUBE_CHANNEL_DATA } from "../../Utils/Constants";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { MdLibraryAdd } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { addWatchLaterVideos } from "../../Utils/WatchLaterSlice";
 
 const VideoCard = ({ videoInfo }) => {
+  const dispatch = useDispatch();
   // console.log(videoInfo);
 
   const [channelData, setChannelData] = useState([]);
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
   const isDarkModeActive = useSelector((store) => store.app.darkMode);
+  const [showWatchLater, setShowWatchLater] = useState(false);
 
   const { snippet, statistics } = videoInfo;
   // console.log();
   const { channelTitle, title, thumbnails, publishedAt, channelId } = snippet;
   const { id } = videoInfo;
+  // console.log(id);
 
   const getChannelLogo = async () => {
     const data = await fetch(YOUTUBE_CHANNEL_DATA + "&id=" + channelId);
@@ -42,12 +48,25 @@ const VideoCard = ({ videoInfo }) => {
       return Math.floor(daysAgo / 365) + " year";
     }
   };
+
+  const handleWatchLaterIconClick = () => {
+    setShowWatchLater(!showWatchLater);
+    // console.log("Watch later icon clicked");
+  };
+
+  const addToWatchLater = (id) => {
+    // console.log("Added to watch later");
+    // console.log(id);
+    dispatch(addWatchLaterVideos(id));
+    setShowWatchLater(false);
+  };
+
   return (
     <div
-      className={` w-fit flex flex-col my-2 rounded-xl pb-2 cursor-pointer `}
+      className={`relative w-fit flex flex-col my-2 rounded-xl pb-2 cursor-pointer `}
     >
       <Link to={"/watch?v=" + `${id}`}>
-        <div className="imgbox mb-2">
+        <div className="video-thumbnail mb-2">
           <img
             src={thumbnails.medium.url}
             alt=""
@@ -56,7 +75,7 @@ const VideoCard = ({ videoInfo }) => {
         </div>
       </Link>
 
-      <div className="title-views flex flex-col ">
+      <div className="title-views  items-baseline  flex flex-col ">
         <div className="flex gap-2">
           <Link to={"/channelPage?id=" + videoInfo.snippet.channelId}>
             <img
@@ -66,20 +85,43 @@ const VideoCard = ({ videoInfo }) => {
                   : "none"
               }
               alt=""
-              className="w-10 h-10 rounded-full"
+              className="channel-logo w-10 h-10 rounded-full"
             />
           </Link>
-          <Link
-            to={"/watch?v=" + `${id}`}
-            className={` title font-semibold  text-base w-72 h-12 overflow-hidden`}
-          >
-            <span className={`${isDarkModeActive ? "text-white" : ""}`}>
-              {title}
-            </span>
+          <Link to={"/watch?v=" + `${id}`}>
+            <div className="title  font-semibold  text-base w-[17.5rem] h-12 overflow-hidden">
+              <span className={`${isDarkModeActive ? "text-white" : ""} `}>
+                {title}
+              </span>
+            </div>
           </Link>
+
+          <span>
+            <MdLibraryAdd
+              className={`${
+                isDarkModeActive
+                  ? "text-white hover:bg-zinc-700"
+                  : "text-black hover:bg-gray-200 "
+              } -ml-3  rounded-full p-2 transition-all relative`}
+              size={35}
+              onClick={() => handleWatchLaterIconClick()}
+            />
+            {showWatchLater && (
+              <span
+                className={`${
+                  isDarkModeActive
+                    ? "bg-zinc-800 text-white  hover:bg-zinc-700"
+                    : "bg-gray-200 text-black hover:bg-slate-300"
+                } transition-all font-medium p-2 rounded-sm text-xs right-1 absolute`}
+                onClick={() => addToWatchLater(id)}
+              >
+                Save to Watch Later
+              </span>
+            )}
+          </span>
         </div>
 
-        <div className="channelTitle-views-timePosted pl-12">
+        <div className=" channelTitle-views-timePosted pl-12">
           <Link to={"/channelPage?id=" + videoInfo.snippet.channelId}>
             <span
               className={` ${

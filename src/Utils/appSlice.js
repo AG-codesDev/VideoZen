@@ -17,7 +17,7 @@ const appSlice = createSlice({
     closeMenu: (state) => {
       state.isMenuOpen = false;
     },
-    addVideos: (state, action) => {
+    addHomeVideos: (state, action) => {
       state.homeVideos = action.payload;
     },
     addSearchVideos: (state, action) => {
@@ -38,7 +38,7 @@ const appSlice = createSlice({
 export const {
   toggleMenu,
   closeMenu,
-  addVideos,
+  addHomeVideos,
   addSearchVideos,
   addShortsVideos,
   addExploreVideos,

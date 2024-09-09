@@ -4,10 +4,15 @@ import { IoMdCheckmarkCircle } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { YOUTUBE_CHANNEL_DATA } from "../../Utils/Constants";
 import { useSelector } from "react-redux";
+import { MdLibraryAdd } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { addWatchLaterVideos } from "../../Utils/WatchLaterSlice";
 
 const ExploreVideos = ({ video }) => {
   const isDarkModeActive = useSelector((store) => store.app.darkMode);
   const [channelData, setChannelData] = useState([]);
+  const [showWatchLater, setShowWatchLater] = useState(false);
+  const dispatch = useDispatch();
 
   const getChannelLogo = async () => {
     const data = await fetch(
@@ -22,8 +27,19 @@ const ExploreVideos = ({ video }) => {
     getChannelLogo();
   }, []);
 
+  const handleWatchLaterIconClick = () => {
+    setShowWatchLater(!showWatchLater);
+    // console.log("Watch later icon clicked");
+  };
+
+  const addToWatchLater = (id) => {
+    // console.log("Added to watch later");
+    console.log(id.videoId);
+    dispatch(addWatchLaterVideos(id.videoId));
+    setShowWatchLater(false);
+  };
+
   return (
-    // <Link to={`/watch?v=` + video.id.videoId} key={video.id.videoId}>
     <div className="w-fit flex flex-col my-2 cursor-pointer">
       <Link to={`/watch?v=` + video.id.videoId} key={video.id.videoId}>
         <div className="imgbox mb-2">
@@ -34,7 +50,7 @@ const ExploreVideos = ({ video }) => {
           />
         </div>
       </Link>
-      <div className="title-views flex flex-col ">
+      <div className="title-views relative flex flex-col ">
         <div className="flex gap-2">
           <Link to={"/channelPage?id=" + video.snippet.channelId}>
             <img
@@ -57,6 +73,29 @@ const ExploreVideos = ({ video }) => {
               {video.snippet.title}
             </span>
           </Link>
+          <span>
+            <MdLibraryAdd
+              className={`${
+                isDarkModeActive
+                  ? "text-white hover:bg-zinc-700"
+                  : "text-black hover:bg-gray-200 "
+              } -ml-3  rounded-full p-2 transition-all `}
+              size={35}
+              onClick={() => handleWatchLaterIconClick()}
+            />
+            {showWatchLater && (
+              <span
+                className={`${
+                  isDarkModeActive
+                    ? "bg-zinc-800 text-white  hover:bg-zinc-700"
+                    : "bg-gray-200 text-black hover:bg-slate-300"
+                } transition-all font-medium p-2 rounded-sm text-xs right-1 absolute`}
+                onClick={() => addToWatchLater(video.id)}
+              >
+                Save to Watch Later
+              </span>
+            )}
+          </span>
         </div>
 
         <div className="channelTitle-views-timePosted pl-12 mt-1">
@@ -71,7 +110,6 @@ const ExploreVideos = ({ video }) => {
         </div>
       </div>
     </div>
-    // </Link>
   );
 };
 

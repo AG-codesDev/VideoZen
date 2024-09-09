@@ -134,7 +134,7 @@ const Heading = () => {
             <span
               className={`${
                 isDarkModeActive ? "text-white" : "text-black"
-              } font-LilitaOne lg:text-2xl text-xl mt-1 flex flex-col`}
+              } font-LilitaOne lg:text-2xl text-xl mt-1 flex lg:flex-col flex-row items-center gap-1 lg:gap-0`}
             >
               <span>VideoZen</span>
               <span className="text-xs font-Pacifico"> - by Apurva Gaurav</span>
@@ -164,7 +164,7 @@ const Heading = () => {
           />
           <MdKeyboardVoice className=" bg-gray-200 text-[2.5rem] p-2 ml-5 rounded-full hidden lg:block" />
         </div>
-        <div className="darkmode-login justify-around gap-6  flex items-center">
+        <div className="darkmode-login justify-around lg:gap-6  flex items-center">
           <FaSearch
             className={` ${
               isDarkModeActive ? "text-white" : ""
@@ -197,7 +197,7 @@ const Heading = () => {
 
           {!isUserSignedIn ? (
             <button
-              className="bg-green-600 text-white p-2 text-sm font-medium rounded-md"
+              className="bg-green-600 text-white hidden lg:block p-2 text-sm font-medium rounded-md"
               onClick={handleSignIn}
             >
               <span className="flex gap-2 items-center">

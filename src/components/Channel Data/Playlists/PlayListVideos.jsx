@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { GoDotFill } from "react-icons/go";
 import { useSelector } from "react-redux";
 
 const PlayListVideos = ({ video }) => {

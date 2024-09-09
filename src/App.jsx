@@ -8,6 +8,7 @@ import MainContainer from "./components/Explore Menu/MainContainer";
 import PlayListPage from "./components/Channel Data/Playlists/PlayListPage";
 import Error from "./components/Error/Error";
 import SignUpLogin from "./components/Signup Login/SignUpLogin";
+import WatchLaterPage from "./components/Watch Later/WatchLaterPage";
 
 const router = createBrowserRouter([
   {
@@ -39,9 +40,10 @@ const router = createBrowserRouter([
         path: "/playlistPage",
         element: <PlayListPage />,
       },
+
       {
-        path: "/signUp-login",
-        element: <SignUpLogin />,
+        path: "/watchLater",
+        element: <WatchLaterPage />,
       },
     ],
   },

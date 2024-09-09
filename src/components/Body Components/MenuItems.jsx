@@ -10,6 +10,7 @@ import { FaRegNewspaper } from "react-icons/fa6";
 import { IoGameController } from "react-icons/io5";
 import { MdPodcasts } from "react-icons/md";
 import { FaLaptopCode } from "react-icons/fa";
+import { MdOutlineWatchLater } from "react-icons/md";
 
 const MenuItems = () => {
   const [currentLocation, setCurrentLocation] = useState("");
@@ -22,6 +23,7 @@ const MenuItems = () => {
   // console.log(currentLocation);
 
   const [homeTabActive, setHomeTabActive] = useState(true);
+  const [watchLaterTabActive, setWatchLaterTabActive] = useState(true);
   const [shortsTabActive, setShortsTabActive] = useState(false);
 
   const [trendingTabActive, setTrendingTabActive] = useState(false);
@@ -31,10 +33,10 @@ const MenuItems = () => {
   const [newsTabActive, setNewsTabActive] = useState(false);
   const [podcastTabActive, setPodcastTabActive] = useState(false);
   const [codingTabActive, setCodingTabActive] = useState(false);
-  const [iplTabActive, setIplTabActive] = useState(false);
 
   useEffect(() => {
     if (currentLocation !== "/explore") {
+      setWatchLaterTabActive(false);
       setShortsTabActive(false);
       setHomeTabActive(false);
       setTrendingTabActive(false);
@@ -44,7 +46,6 @@ const MenuItems = () => {
       setNewsTabActive(false);
       setPodcastTabActive(false);
       setCodingTabActive(false);
-      setIplTabActive(false);
     }
   }, [currentLocation]);
 
@@ -65,7 +66,19 @@ const MenuItems = () => {
       setNewsTabActive(false);
       setPodcastTabActive(false);
       setCodingTabActive(false);
-      setIplTabActive(false);
+    } else if (path === "Watch Later") {
+      navigate(`/watchLater`);
+      setWatchLaterTabActive(true);
+
+      setTrendingTabActive(false);
+      setHomeTabActive(false);
+      setShortsTabActive(false);
+      setMusicTabActive(false);
+      setFilmsTabActive(false);
+      setGamingTabActive(false);
+      setNewsTabActive(false);
+      setPodcastTabActive(false);
+      setCodingTabActive(false);
     } else if (path === "Trending") {
       navigate(`/explore?category=${path}`);
       setTrendingTabActive(true);
@@ -78,7 +91,6 @@ const MenuItems = () => {
       setNewsTabActive(false);
       setPodcastTabActive(false);
       setCodingTabActive(false);
-      setIplTabActive(false);
     } else if (path === "Music") {
       navigate(`/explore?category=${path}`);
       setMusicTabActive(true);
@@ -91,7 +103,6 @@ const MenuItems = () => {
       setNewsTabActive(false);
       setPodcastTabActive(false);
       setCodingTabActive(false);
-      setIplTabActive(false);
     } else if (path === "Films") {
       navigate(`/explore?category=${path}`);
       setFilmsTabActive(true);
@@ -104,7 +115,6 @@ const MenuItems = () => {
       setNewsTabActive(false);
       setPodcastTabActive(false);
       setCodingTabActive(false);
-      setIplTabActive(false);
     } else if (path === "Gaming") {
       navigate(`/explore?category=${path}`);
       setGamingTabActive(true);
@@ -117,7 +127,6 @@ const MenuItems = () => {
       setNewsTabActive(false);
       setPodcastTabActive(false);
       setCodingTabActive(false);
-      setIplTabActive(false);
     } else if (path === "News") {
       navigate(`/explore?category=${path}`);
       setNewsTabActive(true);
@@ -130,7 +139,6 @@ const MenuItems = () => {
       setGamingTabActive(false);
       setPodcastTabActive(false);
       setCodingTabActive(false);
-      setIplTabActive(false);
     } else if (path === "Podcasts") {
       navigate(`/explore?category=${path}`);
       setPodcastTabActive(true);
@@ -143,7 +151,6 @@ const MenuItems = () => {
       setGamingTabActive(false);
       setNewsTabActive(false);
       setCodingTabActive(false);
-      setIplTabActive(false);
     } else if (path === "Coding") {
       navigate(`/explore?category=${path}`);
       setCodingTabActive(true);
@@ -156,10 +163,8 @@ const MenuItems = () => {
       setGamingTabActive(false);
       setNewsTabActive(false);
       setPodcastTabActive(false);
-      setIplTabActive(false);
     } else if (path === "IPL") {
       navigate(`/explore?category=${path}`);
-      setIplTabActive(true);
 
       setHomeTabActive(false);
       setShortsTabActive(false);
@@ -184,7 +189,6 @@ const MenuItems = () => {
     setNewsTabActive(false);
     setPodcastTabActive(false);
     setCodingTabActive(false);
-    setIplTabActive(false);
   };
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
   const isDarkModeActive = useSelector((store) => store.app.darkMode);
@@ -192,14 +196,16 @@ const MenuItems = () => {
   return (
     <div
       className={`${
-        isDarkModeActive ? "bg-zinc-900 text-white shadow-gray-900" : "bg-white"
-      } lg:flex flex-col gap-7  shadow-lg h-screen rounded-sm  ease-in-out duration-300 fixed top-[3.5rem] ${
+        isDarkModeActive
+          ? "bg-zinc-900  text-white shadow-gray-900"
+          : "bg-white"
+      } lg:flex flex-col gap-7 z-10 lg:z-0 shadow-lg h-screen rounded-sm  ease-in-out duration-300 fixed top-[3.5rem] ${
         isMenuOpen ? "translate-x-0" : "-translate-x-48"
       } `}
     >
       <div
         className={`
-          flex  h-full flex-col px-2 mt-4 w-44 `}
+          flex  h-full flex-col px-2 mt-6 w-44 `}
       >
         <ul className="flex flex-col h-full justify-evenly  gap-8 md:gap-6">
           <li
@@ -214,6 +220,19 @@ const MenuItems = () => {
             Home
           </li>
 
+          <li
+            className={` ${
+              isDarkModeActive ? "hover:bg-zinc-800 transition-all" : ""
+            } flex gap-3 items-center hover:cursor-pointer  ${
+              watchLaterTabActive ? "text-red-500" : ""
+            } hover:bg-gray-100 p-2 rounded-md border-gray-200  `}
+            onClick={(e) => hanldeMenuItemClick(e)}
+            // onClick={(e) => handleHomeClick()}
+          >
+            <MdOutlineWatchLater className="text-xl" />
+            Watch Later
+          </li>
+          <hr className="border-slate-200 font-bold border-2" />
           <li
             className={` ${
               isDarkModeActive ? "hover:bg-zinc-800 transition-all" : ""

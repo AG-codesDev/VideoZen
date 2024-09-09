@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { YOUTUBE_VIDEO_API } from "../../Utils/Constants";
 import VideoCard from "./VideoCard";
 import { useDispatch, useSelector } from "react-redux";
-import { addVideos } from "../../Utils/appSlice";
+import { addHomeVideos } from "../../Utils/appSlice";
 import HomeShimmer from "../Shimmer/HomeShimmer";
 
 const HomeVideoContainer = () => {
@@ -18,7 +18,7 @@ const HomeVideoContainer = () => {
   const getVideos = async () => {
     const data = await fetch(YOUTUBE_VIDEO_API);
     const json = await data.json();
-    dispatch(addVideos(json.items));
+    dispatch(addHomeVideos(json.items));
   };
   if (homeVideos.length === 0) {
     return <HomeShimmer />;
@@ -81,5 +81,3 @@ const HomeVideoContainer = () => {
 };
 
 export default HomeVideoContainer;
-
-// do the same thing for explore videos container
